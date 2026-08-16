@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>easybidding - Negotiation History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#584400",
+                        "surface-dim": "#0f131f",
+                        "secondary-container": "#414659",
+                        "inverse-surface": "#dfe2f3",
+                        "primary": "#eac249",
+                        "surface-container-high": "#262a37",
+                        "on-secondary-fixed": "#161b2c",
+                        "surface-tint": "#eac249",
+                        "tertiary": "#c0c5e2",
+                        "primary-fixed": "#ffe08b",
+                        "on-secondary": "#2b3042",
+                        "tertiary-container": "#9da3bf",
+                        "tertiary-fixed": "#dce1ff",
+                        "on-surface": "#dfe2f3",
+                        "on-tertiary-fixed-variant": "#40465e",
+                        "surface-variant": "#313442",
+                        "on-tertiary-container": "#333950",
+                        "on-error": "#690005",
+                        "secondary": "#c1c5dd",
+                        "on-primary": "#3d2f00",
+                        "on-background": "#dfe2f3",
+                        "surface-bright": "#353946",
+                        "surface-container-lowest": "#0a0e1a",
+                        "inverse-on-surface": "#2c303d",
+                        "on-secondary-fixed-variant": "#414659",
+                        "on-surface-variant": "#d0c5af",
+                        "on-primary-container": "#493800",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#313442",
+                        "on-secondary-container": "#b0b4cb",
+                        "secondary-fixed-dim": "#c1c5dd",
+                        "surface-container": "#1b1f2c",
+                        "tertiary-fixed-dim": "#c0c5e2",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#eac249",
+                        "background": "#0f131f",
+                        "surface-container-low": "#171b28",
+                        "on-tertiary": "#292f46",
+                        "surface": "#0f131f",
+                        "on-primary-fixed": "#241a00",
+                        "primary-container": "#c5a028",
+                        "inverse-primary": "#745b00",
+                        "outline-variant": "#4d4635",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#dde1f9",
+                        "outline": "#99907c",
+                        "on-tertiary-fixed": "#141a30"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-padding": "20px",
+                        "sidebar-width": "280px",
+                        "gutter": "16px",
+                        "container-margin": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex font-body-md overflow-hidden">
+<!-- SideNavBar (Suppressed due to Task-Focused/Linear Nature of specific Negotiation screen - but user requested existing SideNavBar. Following rule: "If designing a specific transaction screen... suppress... wait, user explicitly said 'Use the existing SideNavBar and TopNavBar components.' Conflict protocol: Direct user prompt wins over general guidelines if explicitly stated. Including them, but maybe minimal state if possible. Will include full as requested.) -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container-low border-r border-outline-variant flex flex-col py-6 px-4 z-20">
+<!-- Brand -->
+<div class="mb-8 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-xl" style="font-variation-settings: 'FILL' 1;">gavel</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">easybidding</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Super Admin Portal</p>
+</div>
+</div>
+<!-- CTA -->
+<button class="mb-6 w-full bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors py-3 px-4 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">add</span>
+            Create Request
+        </button>
+<!-- Navigation -->
+<nav class="flex-1 overflow-y-auto space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">fact_check</span> Approvals
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">group</span> Users
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">domain</span> Departments
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold bg-secondary-container transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">factory</span> Vendor Master
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">inventory_2</span> Item Master
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">shopping_cart</span> Purchase
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-xl">analytics</span> Reports
+            </a>
+</nav>
+<!-- Footer -->
+<div class="mt-auto pt-6 border-t border-outline-variant space-y-1">
+<div class="flex items-center gap-3 px-4 py-2 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">verified_user</span> Secured Connection
+            </div>
+<button class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all font-label-md text-label-md">
+<span class="material-symbols-outlined text-xl">logout</span> Logout
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-[280px] flex flex-col h-screen relative bg-surface-dim">
+<!-- TopNavBar -->
+<header class="bg-surface-container border-b border-outline-variant shadow-sm w-full px-container-margin h-16 flex justify-between items-center shrink-0 z-10 sticky top-0">
+<!-- Breadcrumb / Context -->
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                    Back to Vendor Master
+                </a>
+<span class="text-outline">/</span>
+<span class="text-on-surface font-medium">Negotiation Thread</span>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<button class="p-2 rounded-full hover:bg-surface-bright transition-colors duration-200 active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-bright transition-colors duration-200 active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-bright transition-colors duration-200 active:scale-95">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<button class="text-primary font-label-md px-4 py-2 rounded-lg border border-outline-variant hover:bg-surface-bright transition-colors duration-200 active:scale-95">Support</button>
+<button class="bg-primary-container text-on-primary-container font-label-md px-4 py-2 rounded-lg hover:bg-primary hover:text-on-primary transition-colors duration-200 active:scale-95">New Order</button>
+<div class="ml-2 w-8 h-8 rounded-full bg-secondary-container overflow-hidden border border-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface text-lg">person</span>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 overflow-y-auto p-container-margin pb-32">
+<!-- Contextual Header & Overview Bento -->
+<div class="grid grid-cols-12 gap-gutter mb-6">
+<!-- Header Card -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container rounded-xl p-card-padding border border-outline-variant shadow-[0_4px_24px_rgba(0,0,0,0.2)]">
+<div class="flex justify-between items-start mb-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-secondary-container text-on-surface px-2.5 py-1 rounded-md font-label-sm flex items-center gap-1 border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]">tag</span> RFQ-2023-8904
+                                </span>
+<span class="bg-error-container text-error px-2.5 py-1 rounded-md font-label-sm flex items-center gap-1 border border-error/20">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> Action Required
+                                </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Nexus Machining Co.</h2>
+<p class="text-on-surface-variant font-body-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">precision_manufacturing</span>
+                                High-Precision Titanium Shafts (Qty: 5,000)
+                            </p>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant font-label-sm mb-1 uppercase tracking-wider">Status</p>
+<p class="text-primary font-headline-md flex items-center gap-2 justify-end">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+                                Round 3 Pending
+                            </p>
+</div>
+</div>
+<!-- Mini Comparison Table within Header Bento -->
+<div class="bg-surface-container-low rounded-lg border border-outline-variant overflow-hidden">
+<table class="w-full text-left font-body-sm">
+<thead class="bg-surface-container-high border-b border-outline-variant">
+<tr>
+<th class="py-3 px-4 text-on-surface-variant font-label-md">Term</th>
+<th class="py-3 px-4 text-on-surface-variant font-label-md">Initial Bid (Vendor)</th>
+<th class="py-3 px-4 text-on-surface-variant font-label-md">Current Offer (Vendor)</th>
+<th class="py-3 px-4 text-on-surface-variant font-label-md text-right">Target (Admin)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-label-md">
+<tr class="hover:bg-surface-bright/30 transition-colors">
+<td class="py-3 px-4 text-on-surface">Unit Rate</td>
+<td class="py-3 px-4 text-on-surface-variant line-through">$2,600.00</td>
+<td class="py-3 px-4 text-primary font-bold">$2,520.00 <span class="text-xs text-error ml-1">(-3.0%)</span></td>
+<td class="py-3 px-4 text-on-surface text-right">$2,450.00</td>
+</tr>
+<tr class="hover:bg-surface-bright/30 transition-colors">
+<td class="py-3 px-4 text-on-surface">Lead Time</td>
+<td class="py-3 px-4 text-on-surface-variant">45 Days</td>
+<td class="py-3 px-4 text-on-surface">45 Days</td>
+<td class="py-3 px-4 text-on-surface text-right">30 Days</td>
+</tr>
+<tr class="hover:bg-surface-bright/30 transition-colors">
+<td class="py-3 px-4 text-on-surface">Payment Terms</td>
+<td class="py-3 px-4 text-on-surface-variant line-through">Net 30</td>
+<td class="py-3 px-4 text-on-surface">Net 45</td>
+<td class="py-3 px-4 text-on-surface text-right">Net 60</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Financial Impact Card -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container rounded-xl p-card-padding border border-outline-variant flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-700"></div>
+<div>
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">savings</span> Value at Stake
+                        </p>
+<h3 class="font-headline-lg text-display-lg text-on-surface mb-1">$12.6M</h3>
+<p class="text-on-surface-variant font-body-sm">Total Initial Bid Value</p>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant space-y-4">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-on-surface-variant font-label-sm mb-1">Current Savings Negotiated</p>
+<p class="text-primary font-headline-md">$400,000</p>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant font-label-sm mb-1">Target Savings</p>
+<p class="text-on-surface font-headline-md">$750,000</p>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 53%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chronological Timeline -->
+<div class="bg-surface-container rounded-xl p-card-padding border border-outline-variant shadow-sm relative">
+<h3 class="font-headline-md text-on-surface mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span> Negotiation Thread
+                </h3>
+<!-- Timeline Stem -->
+<div class="absolute left-[44px] top-[100px] bottom-10 w-px bg-outline-variant z-0"></div>
+<div class="space-y-8 relative z-10">
+<!-- Entry 1: Initial Bid (Vendor) -->
+<div class="flex gap-4 group">
+<div class="w-12 flex flex-col items-center shrink-0">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">store</span>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-low rounded-lg border border-outline-variant p-4">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="font-label-md text-on-surface flex items-center gap-2">
+                                        Nexus Machining Co. <span class="bg-secondary-container text-on-surface px-2 py-0.5 rounded text-[10px] uppercase tracking-wider">Vendor</span>
+</p>
+<p class="text-on-surface-variant font-body-sm text-xs mt-1">Oct 12, 2023 - 09:45 AM</p>
+</div>
+<span class="text-on-surface-variant font-label-sm border border-outline-variant px-2 py-1 rounded bg-surface">Round 1</span>
+</div>
+<div class="bg-surface-dim p-3 rounded border border-outline-variant/50 mb-3">
+<p class="font-label-md text-on-surface mb-2">Initial Submission</p>
+<ul class="font-label-sm text-on-surface-variant space-y-1">
+<li>• Unit Rate: $2,600.00</li>
+<li>• Lead Time: 45 Days</li>
+<li>• Payment: Net 30</li>
+</ul>
+</div>
+<p class="text-body-sm text-on-surface italic">"Attached is our initial proposal based on the RFQ specs. Pricing reflects current raw material volatility."</p>
+</div>
+</div>
+<!-- Entry 2: Counter Offer (Admin) -->
+<div class="flex gap-4 group">
+<div class="w-12 flex flex-col items-center shrink-0">
+<div class="w-10 h-10 rounded-full bg-secondary-container border-2 border-outline flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-primary">admin_panel_settings</span>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-low rounded-lg border border-outline-variant p-4">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="font-label-md text-on-surface flex items-center gap-2">
+                                        Super Admin (You) <span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px] uppercase tracking-wider border border-primary/30">Procurement</span>
+</p>
+<p class="text-on-surface-variant font-body-sm text-xs mt-1">Oct 14, 2023 - 14:20 PM</p>
+</div>
+<span class="text-on-surface-variant font-label-sm border border-outline-variant px-2 py-1 rounded bg-surface">Round 2</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+<div class="bg-surface-dim p-3 rounded border border-outline-variant/50">
+<p class="font-label-md text-on-surface mb-2 flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-error">arrow_downward</span> Counter Term Updates</p>
+<ul class="font-label-sm text-on-surface-variant space-y-1">
+<li>• Unit Rate: <span class="text-error line-through mr-1">$2,600.00</span> <span class="text-on-surface font-bold">$2,450.00</span></li>
+<li>• Payment: <span class="text-error line-through mr-1">Net 30</span> <span class="text-on-surface font-bold">Net 60</span></li>
+</ul>
+</div>
+</div>
+<p class="text-body-sm text-on-surface border-l-2 border-primary pl-3">"Thank you for the proposal. Given our historical volume and the 5,000 qty commitment, we require a target rate of $2,450. We also standardise on Net 60 for large capital outlays."</p>
+</div>
+</div>
+<!-- Entry 3: Current Offer (Vendor) - ACTION REQUIRED -->
+<div class="flex gap-4 group">
+<div class="w-12 flex flex-col items-center shrink-0">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border-2 border-error/80 flex items-center justify-center relative">
+<span class="absolute -top-1 -right-1 w-3 h-3 bg-error rounded-full animate-ping"></span>
+<span class="absolute -top-1 -right-1 w-3 h-3 bg-error rounded-full"></span>
+<span class="material-symbols-outlined text-on-surface-variant">store</span>
+</div>
+</div>
+<div class="flex-1 bg-surface-bright rounded-lg border border-error/40 shadow-[0_0_15px_rgba(255,180,171,0.05)] p-4 relative overflow-hidden">
+<!-- Subtle red glow background for action state -->
+<div class="absolute inset-0 bg-gradient-to-r from-error/5 to-transparent pointer-events-none"></div>
+<div class="flex justify-between items-start mb-3 relative z-10">
+<div>
+<p class="font-label-md text-on-surface flex items-center gap-2">
+                                        Nexus Machining Co. <span class="bg-secondary-container text-on-surface px-2 py-0.5 rounded text-[10px] uppercase tracking-wider">Vendor</span>
+</p>
+<p class="text-on-surface-variant font-body-sm text-xs mt-1">Oct 16, 2023 - 11:05 AM</p>
+</div>
+<span class="text-error font-label-sm border border-error/30 px-2 py-1 rounded bg-error/10 font-bold">Awaiting Your Response</span>
+</div>
+<div class="bg-surface-dim p-3 rounded border border-outline-variant/50 mb-3 relative z-10">
+<p class="font-label-md text-on-surface mb-2 flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">handshake</span> Compromise Offered</p>
+<ul class="font-label-sm text-on-surface-variant space-y-2">
+<li class="flex items-center gap-2">
+<span class="w-24 inline-block">Unit Rate:</span>
+<span class="line-through text-on-surface-variant/50">$2,600.00</span>
+<span class="material-symbols-outlined text-[14px]">arrow_right_alt</span>
+<span class="text-primary font-bold">$2,520.00</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="w-24 inline-block">Payment:</span>
+<span class="line-through text-on-surface-variant/50">Net 30</span>
+<span class="material-symbols-outlined text-[14px]">arrow_right_alt</span>
+<span class="text-on-surface font-bold">Net 45</span>
+</li>
+</ul>
+</div>
+<p class="text-body-sm text-on-surface italic relative z-10">"We cannot meet $2,450 without compromising raw material quality thresholds specified in section 4.B. We can drop to $2,520 and meet you halfway on terms at Net 45. This is our best and final for this production run."</p>
+<!-- Attachments -->
+<div class="mt-4 flex gap-3 relative z-10">
+<div class="flex items-center gap-2 bg-surface p-2 rounded border border-outline-variant text-label-sm text-on-surface hover:border-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[16px] text-tertiary">picture_as_pdf</span>
+                                    Revised_Quote_v2.pdf
+                                </div>
+<div class="flex items-center gap-2 bg-surface p-2 rounded border border-outline-variant text-label-sm text-on-surface hover:border-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[16px] text-tertiary">description</span>
+                                    Material_Cost_Breakdown.xlsx
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Action Bar -->
+<div class="fixed bottom-0 left-[280px] right-0 bg-surface-container-high border-t border-outline-variant p-4 shadow-[0_-8px_24px_rgba(0,0,0,0.4)] z-30">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">gavel</span>
+<div>
+<p class="text-on-surface font-headline-md text-lg">Negotiation Decision</p>
+<p class="text-on-surface-variant font-body-sm">Respond to Nexus Machining Co.'s latest offer of $2,520.00</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-2.5 rounded-lg border border-outline font-label-md text-on-surface hover:bg-surface-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">close</span> Reject &amp; Close
+                    </button>
+<button class="px-6 py-2.5 rounded-lg border border-primary text-primary font-label-md hover:bg-primary/10 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">reply</span> Counter-Offer
+                    </button>
+<button class="px-8 py-2.5 rounded-lg bg-primary text-on-primary font-headline-md text-base shadow-[0_0_15px_rgba(234,194,73,0.3)] hover:bg-primary-fixed hover:scale-105 transition-all duration-200 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">check_circle</span> Accept &amp; Award
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

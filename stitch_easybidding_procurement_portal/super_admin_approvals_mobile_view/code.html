@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>easybidding - Approvals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#313442",
+                        "background": "#0f131f",
+                        "on-surface": "#dfe2f3",
+                        "secondary": "#c1c5dd",
+                        "inverse-primary": "#745b00",
+                        "tertiary-container": "#9da3bf",
+                        "on-tertiary-fixed-variant": "#40465e",
+                        "on-tertiary": "#292f46",
+                        "on-background": "#dfe2f3",
+                        "secondary-fixed-dim": "#c1c5dd",
+                        "inverse-surface": "#dfe2f3",
+                        "secondary-container": "#414659",
+                        "surface-container": "#1b1f2c",
+                        "on-primary-fixed": "#241a00",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#161b2c",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-container-low": "#171b28",
+                        "primary": "#eac249",
+                        "on-primary-container": "#493800",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#141a30",
+                        "inverse-on-surface": "#2c303d",
+                        "outline": "#99907c",
+                        "primary-container": "#c5a028",
+                        "surface-bright": "#353946",
+                        "surface": "#0f131f",
+                        "surface-tint": "#eac249",
+                        "tertiary": "#c0c5e2",
+                        "on-secondary-fixed-variant": "#414659",
+                        "on-primary": "#3d2f00",
+                        "surface-variant": "#313442",
+                        "surface-dim": "#0f131f",
+                        "tertiary-fixed": "#dce1ff",
+                        "secondary-fixed": "#dde1f9",
+                        "tertiary-fixed-dim": "#c0c5e2",
+                        "on-tertiary-container": "#333950",
+                        "surface-container-lowest": "#0a0e1a",
+                        "on-error": "#690005",
+                        "primary-fixed": "#ffe08b",
+                        "outline-variant": "#4d4635",
+                        "on-secondary-container": "#b0b4cb",
+                        "on-secondary": "#2b3042",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#584400",
+                        "primary-fixed-dim": "#eac249",
+                        "surface-container-high": "#262a37"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-padding": "20px",
+                        "sidebar-width": "280px",
+                        "unit": "4px",
+                        "container-margin": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-font-smoothing: antialiased;
+        }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md h-screen overflow-hidden flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary font-headline-md text-headline-md fixed top-0 w-full z-50 flex items-center justify-between px-gutter w-full h-16 shadow-none">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">easybidding</span>
+</div>
+<div class="flex items-center">
+<button class="hover:bg-surface-container-high transition-colors active:scale-95 p-1 rounded-full flex items-center justify-center">
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small circular avatar placeholder image showing a generic profile silhouette in dark mode styling, reflecting a secure industrial procurement system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjAnJdOD60rrwSTWHwpVWDRy_Swp6qdQSwRbXW_LW7hm0FgYrNFoeMUWKh6c3aBTdwjakk-AY3NfU3e5rLcwLwKTs7yo6jzy19H7pGPODUoD6P_R9G0NVjaIf_r_YARhfzsEj6Pq4Kze5KbubGXBlLh661ni0R0Ay6RzElkvRFkpifC6TbebY6ULEfurO1YhmyvFkrRoToOhF5o74Nq2yThmfPEeqIDD5zpWxI7YKWhJn4sDwWN38xnw"/>
+</button>
+</div>
+</header>
+<!-- Main Canvas (Scrollable) -->
+<main class="flex-1 overflow-y-auto mt-16 mb-20 px-4 py-6 flex flex-col gap-6">
+<!-- Header & Search -->
+<div class="flex flex-col gap-4">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Approvals</h1>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low text-on-surface border border-surface-container-highest focus:border-primary-container rounded-lg pl-10 pr-4 py-3 font-body-sm text-body-sm transition-colors focus:outline-none focus:ring-1 focus:ring-primary-container" placeholder="Search ID, Name, or Type..." type="text"/>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex bg-surface-container-low p-1 rounded-lg">
+<button class="flex-1 py-2 font-label-md text-label-md bg-surface-container-highest text-primary font-bold rounded shadow-sm text-center">
+                Users <span class="bg-primary-container text-on-primary-container rounded-full px-2 py-0.5 ml-1 text-xs">12</span>
+</button>
+<button class="flex-1 py-2 font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors text-center">
+                Vendors <span class="bg-surface-container text-on-surface-variant rounded-full px-2 py-0.5 ml-1 text-xs">5</span>
+</button>
+</div>
+<!-- Approval Cards List -->
+<div class="flex flex-col gap-4 pb-8">
+<!-- Card 1 -->
+<div class="bg-surface-container p-card-padding rounded-xl border border-surface-container-highest flex flex-col gap-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary opacity-5 rounded-bl-full pointer-events-none"></div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Alex Mercer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm">badge</span> Internal Admin
+                        </p>
+</div>
+<span class="font-label-sm text-label-sm bg-tertiary-container text-on-tertiary-container px-2 py-1 rounded">Pending Review</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm border-t border-surface-container-highest pt-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">calendar_today</span> Oct 24, 14:30</span>
+<span class="font-mono text-tertiary">REQ-9942</span>
+</div>
+<div class="flex gap-3 mt-2">
+<button class="flex-1 bg-transparent border border-outline-variant text-on-surface hover:bg-surface-container-high py-2 rounded-lg font-label-md text-label-md transition-colors">
+                        Reject
+                    </button>
+<button class="flex-1 bg-primary-container text-on-primary-container font-bold hover:bg-primary py-2 rounded-lg font-label-md text-label-md transition-colors shadow-[0_4px_12px_rgba(197,160,40,0.2)]">
+                        Approve
+                    </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container p-card-padding rounded-xl border border-surface-container-highest flex flex-col gap-4 relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">Sarah Chen</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm">supervisor_account</span> Procurement Manager
+                        </p>
+</div>
+<span class="font-label-sm text-label-sm bg-tertiary-container text-on-tertiary-container px-2 py-1 rounded">Pending Review</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm border-t border-surface-container-highest pt-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">calendar_today</span> Oct 24, 09:15</span>
+<span class="font-mono text-tertiary">REQ-9941</span>
+</div>
+<div class="flex gap-3 mt-2">
+<button class="flex-1 bg-transparent border border-outline-variant text-on-surface hover:bg-surface-container-high py-2 rounded-lg font-label-md text-label-md transition-colors">
+                        Reject
+                    </button>
+<button class="flex-1 bg-primary-container text-on-primary-container font-bold hover:bg-primary py-2 rounded-lg font-label-md text-label-md transition-colors shadow-[0_4px_12px_rgba(197,160,40,0.2)]">
+                        Approve
+                    </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container p-card-padding rounded-xl border border-surface-container-highest flex flex-col gap-4 relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-lg">David Rodriguez</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm">gavel</span> Legal Counsel
+                        </p>
+</div>
+<span class="font-label-sm text-label-sm bg-tertiary-container text-on-tertiary-container px-2 py-1 rounded">Pending Review</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm border-t border-surface-container-highest pt-3">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">calendar_today</span> Oct 23, 16:45</span>
+<span class="font-mono text-tertiary">REQ-9938</span>
+</div>
+<div class="flex gap-3 mt-2">
+<button class="flex-1 bg-transparent border border-outline-variant text-on-surface hover:bg-surface-container-high py-2 rounded-lg font-label-md text-label-md transition-colors">
+                        Reject
+                    </button>
+<button class="flex-1 bg-primary-container text-on-primary-container font-bold hover:bg-primary py-2 rounded-lg font-label-md text-label-md transition-colors shadow-[0_4px_12px_rgba(197,160,40,0.2)]">
+                        Approve
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container dark:bg-surface-container fixed bottom-0 w-full z-50 rounded-t-xl shadow-lg fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 pb-safe md:hidden border-none">
+<button class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-container px-4 py-1 hover:text-primary-fixed-dim dark:hover:text-primary-fixed-dim active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-container px-4 py-1 hover:text-primary-fixed-dim dark:hover:text-primary-fixed-dim active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined mb-1">request_quote</span>
+<span class="font-label-sm text-label-sm">RFQs</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary-container text-primary dark:text-primary rounded-xl px-4 py-1 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">factory</span>
+<span class="font-label-sm text-label-sm">Vendors</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container dark:text-on-secondary-container px-4 py-1 hover:text-primary-fixed-dim dark:hover:text-primary-fixed-dim active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined mb-1">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</button>
+</nav>
+</body></html>

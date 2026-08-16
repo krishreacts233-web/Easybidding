@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Comparison Dashboard - EasyBidding</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#0f131f",
+                        "primary-fixed": "#ffe08b",
+                        "surface-container-highest": "#313442",
+                        "on-tertiary": "#292f46",
+                        "on-background": "#dfe2f3",
+                        "on-primary": "#3d2f00",
+                        "on-secondary-container": "#b0b4cb",
+                        "on-tertiary-fixed-variant": "#40465e",
+                        "background": "#0f131f",
+                        "surface-bright": "#353946",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#dce1ff",
+                        "surface-tint": "#eac249",
+                        "surface-dim": "#0f131f",
+                        "tertiary-container": "#9da3bf",
+                        "secondary-fixed-dim": "#c1c5dd",
+                        "inverse-primary": "#745b00",
+                        "inverse-surface": "#dfe2f3",
+                        "on-tertiary-container": "#333950",
+                        "surface-variant": "#313442",
+                        "on-secondary-fixed": "#161b2c",
+                        "on-secondary-fixed-variant": "#414659",
+                        "on-secondary": "#2b3042",
+                        "primary-fixed-dim": "#eac249",
+                        "outline-variant": "#4d4635",
+                        "on-surface": "#dfe2f3",
+                        "on-tertiary-fixed": "#141a30",
+                        "tertiary": "#c0c5e2",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#241a00",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#dde1f9",
+                        "primary": "#eac249",
+                        "inverse-on-surface": "#2c303d",
+                        "surface-container-high": "#262a37",
+                        "on-primary-container": "#493800",
+                        "tertiary-fixed-dim": "#c0c5e2",
+                        "on-primary-fixed-variant": "#584400",
+                        "outline": "#99907c",
+                        "secondary": "#c1c5dd",
+                        "surface-container-low": "#171b28",
+                        "primary-container": "#c5a028",
+                        "on-surface-variant": "#d0c5af",
+                        "secondary-container": "#414659",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0a0e1a",
+                        "surface-container": "#1b1f2c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sidebar-width": "280px",
+                        "unit": "4px",
+                        "card-padding": "20px",
+                        "container-margin": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md flex min-h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant flex flex-col h-full py-6 px-4 z-40 hidden md:flex">
+<!-- Brand Header -->
+<div class="flex flex-col gap-1 mb-8">
+<h1 class="font-headline-md text-headline-md text-primary">easybidding</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Super Admin Portal</p>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1 overflow-y-auto space-y-1">
+<!-- Inactive Tabs -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="font-label-md text-label-md">Approvals</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-label-md text-label-md">Departments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-label-md text-label-md">Vendor Master</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Item Master</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-md text-label-md">Purchase</span>
+</a>
+<!-- Active Tab: Comparison (Added to list based on context, but using styling from components) -->
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-secondary-container rounded-lg" href="#">
+<span class="material-symbols-outlined fill text-primary">compare</span>
+<span class="font-label-md text-label-md">Comparison</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</nav>
+<!-- CTA -->
+<div class="mt-4 mb-4">
+<button class="w-full bg-primary text-on-primary font-label-md py-3 rounded-lg hover:bg-primary-container transition-colors">
+        Create Request
+    </button>
+</div>
+<!-- Footer / Trust Indicator -->
+<div class="mt-auto border-t border-surface-container-high pt-4 space-y-1">
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-all duration-200">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-md text-label-md">Secured Connection</span>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-error hover:bg-surface-variant rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden relative md:ml-sidebar-width">
+<!-- TopNavBar -->
+<header class="bg-surface-container dark:bg-surface-container border-b border-outline-variant shadow-sm docked full-width top-0 sticky z-30 flex justify-between items-center w-full px-container-margin h-16">
+<div class="flex items-center gap-4">
+<!-- Mobile menu toggle placeholder -->
+<button class="md:hidden text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary md:hidden">EB</span>
+<span class="font-label-md text-label-md text-on-surface hidden md:block opacity-70">Comparison Dashboard / RFQ-2023-8904</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-bright transition-colors duration-200 rounded-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-bright transition-colors duration-200 rounded-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-bright transition-colors duration-200 rounded-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-6 w-px bg-surface-container-high mx-2"></div>
+<button class="text-on-surface-variant hover:text-on-surface font-label-md px-3 py-1.5 hover:bg-surface-bright transition-colors duration-200 rounded-lg active:scale-95 transition-transform">Support</button>
+<button class="bg-primary text-on-primary font-label-md px-4 py-1.5 rounded-lg hover:bg-primary-container transition-colors active:scale-95 transition-transform">New Order</button>
+<button class="flex items-center gap-2 ml-2 hover:bg-surface-bright transition-colors duration-200 p-1 rounded-full active:scale-95 transition-transform">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Super Admin Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY8fSb_iVAXnf5idv_9yc0Pht6NEfxFFpokfLIgFvYRf4XFOmIN3VKRsI9dWGcVJrKNnan4adhWWTGOp3S68A0ux1S8XXzacgSSd6tF0nLlrRj943pe0do4-iSeFnc3WhGuHCOG6x-gpQCq_QjblYHxtz5Xy1UgSEXfA5ITe-P-nyck6XkpyN4r_MiF6iWiQJqxBHQg_GQmzgvyXU2LsWn4t0tiRqbLQkOGUjqF-rLxYpqAE95tAu3QA"/>
+</button>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-container-margin relative z-10">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">RFQ-2023-8904 Evaluation</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Procurement of Heavy-Duty Industrial Gearbox Assemblies</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant text-on-surface rounded-lg hover:bg-surface-container-high transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export PDF
+                    </button>
+</div>
+</div>
+<!-- Item Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-8">
+<div class="bg-surface-container rounded-xl p-card-padding border border-surface-container-high col-span-1 md:col-span-2 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50"></div>
+<div class="relative z-10">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Target Item</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">G-Series Helical Gearbox</h3>
+<div class="flex gap-6">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Item Code</span>
+<span class="font-label-md text-label-md text-on-surface">ITM-GEAR-001</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Req. Quantity</span>
+<span class="font-label-md text-label-md text-on-surface">150 Units</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-card-padding border border-surface-container-high">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Total Budget</span>
+<div class="font-label-md text-label-md text-surface-variant line-through opacity-50 mb-1">$450,000.00</div>
+<div class="font-headline-md text-headline-md text-primary">$420,000.00</div>
+<div class="mt-2 inline-flex items-center gap-1 text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded text-[12px] font-label-sm">
+<span class="material-symbols-outlined text-[14px]">trending_down</span>
+                        6.6% Variance
+                    </div>
+</div>
+<div class="bg-surface-container rounded-xl p-card-padding border border-surface-container-high">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Delivery Target</span>
+<div class="font-headline-md text-headline-md text-on-surface mb-2">Q3 2024</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span class="font-body-sm text-body-sm">Before Sep 30, 2024</span>
+</div>
+</div>
+</div>
+<!-- Comparison Matrix -->
+<div class="bg-surface-container-low rounded-xl border border-surface-container-high overflow-hidden shadow-lg">
+<!-- Matrix Header (Vendors) -->
+<div class="grid grid-cols-4 border-b border-surface-container-high bg-surface-container">
+<!-- Attributes Column Header -->
+<div class="p-6 flex items-end border-r border-surface-container-high">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Comparison Criteria</span>
+</div>
+<!-- Vendor 1: Lowest Bidder (L1) -->
+<div class="p-6 relative border-r border-surface-container-high bg-primary/5 border-t-4 border-t-primary">
+<div class="absolute top-4 right-4 bg-primary text-on-primary font-bold font-label-sm px-2 py-0.5 rounded shadow-sm flex items-center gap-1 shadow-[0px_4px_12px_rgba(197,160,40,0.4)]">
+<span class="material-symbols-outlined text-[14px]">star</span> L1 Bidder
+                        </div>
+<div class="w-12 h-12 rounded bg-surface-container border border-surface-container-high flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-[24px]">precision_manufacturing</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Atlas Heavy Industries</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Vendor ID: V-4092</p>
+</div>
+<!-- Vendor 2 -->
+<div class="p-6 border-r border-surface-container-high relative">
+<div class="absolute top-4 right-4 bg-surface-container-highest text-on-surface font-label-sm px-2 py-0.5 rounded shadow-sm">
+                            L2
+                        </div>
+<div class="w-12 h-12 rounded bg-surface-container border border-surface-container-high flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-on-surface-variant text-[24px]">factory</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Nexus Machining Co.</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Vendor ID: V-1184</p>
+</div>
+<!-- Vendor 3 -->
+<div class="p-6 relative">
+<div class="absolute top-4 right-4 bg-surface-container-highest text-on-surface font-label-sm px-2 py-0.5 rounded shadow-sm">
+                            L3
+                        </div>
+<div class="w-12 h-12 rounded bg-surface-container border border-surface-container-high flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-on-surface-variant text-[24px]">engineering</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Global Gear Systems</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Vendor ID: V-8830</p>
+</div>
+</div>
+<!-- Matrix Body (Rows) -->
+<div class="flex flex-col">
+<!-- Row: Unit Rate -->
+<div class="grid grid-cols-4 border-b border-surface-container-high hover:bg-surface-container/30 transition-colors">
+<div class="p-4 border-r border-surface-container-high flex items-center pl-6">
+<span class="font-body-md text-body-md text-on-surface-variant">Unit Rate (USD)</span>
+</div>
+<div class="p-4 border-r border-surface-container-high flex items-center font-label-md text-label-md text-primary bg-primary/5 font-bold">
+                            $ 2,450.00
+                        </div>
+<div class="p-4 border-r border-surface-container-high flex flex-col justify-center">
+<div class="font-label-md text-label-md text-on-surface">$ 2,600.00</div>
+<div class="text-error font-label-sm text-[10px]">+6.1%</div>
+</div>
+<div class="p-4 flex flex-col justify-center">
+<div class="font-label-md text-label-md text-on-surface">$ 2,750.00</div>
+<div class="text-error font-label-sm text-[10px]">+12.2%</div>
+</div>
+</div>
+<!-- Row: Total Amount -->
+<div class="grid grid-cols-4 border-b border-surface-container-high hover:bg-surface-container/30 transition-colors">
+<div class="p-4 border-r border-surface-container-high flex items-center pl-6">
+<span class="font-body-md text-body-md text-on-surface-variant font-semibold">Total Amount</span>
+</div>
+<div class="p-4 border-r border-surface-container-high flex items-center font-label-md text-label-md text-primary bg-primary/5 text-lg font-bold">
+                            $ 367,500.00
+                        </div>
+<div class="p-4 border-r border-surface-container-high flex items-center font-label-md text-label-md text-on-surface text-lg">
+                            $ 390,000.00
+                        </div>
+<div class="p-4 flex items-center font-label-md text-label-md text-on-surface text-lg">
+                            $ 412,500.00
+                        </div>
+</div>
+<!-- Row: Lead Time -->
+<div class="grid grid-cols-4 border-b border-surface-container-high hover:bg-surface-container/30 transition-colors">
+<div class="p-4 border-r border-surface-container-high flex items-center pl-6">
+<span class="font-body-md text-body-md text-on-surface-variant">Lead Time</span>
+</div>
+<div class="p-4 border-r border-surface-container-high flex items-center font-body-md text-body-md text-on-surface bg-primary/5">
+                            12 Weeks
+                        </div>
+<div class="p-4 border-r border-surface-container-high flex items-center font-body-md text-body-md text-on-surface">
+                            10 Weeks <span class="ml-2 text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-tighter">(Best)</span>
+</div>
+<div class="p-4 flex items-center font-body-md text-body-md text-on-surface">
+                            14 Weeks
+                        </div>
+</div>
+<!-- Row: Warranty -->
+<div class="grid grid-cols-4 border-b border-surface-container-high hover:bg-surface-container/30 transition-colors">
+<div class="p-4 border-r border-surface-container-high flex items-center pl-6">
+<span class="font-body-md text-body-md text-on-surface-variant">Warranty Period</span>
+</div>
+<div class="p-4 border-r border-surface-container-high flex items-center font-body-md text-body-md text-on-surface bg-primary/5">
+                            24 Months
+                        </div>
+<div class="p-4 border-r border-surface-container-high flex items-center font-body-md text-body-md text-on-surface">
+                            24 Months
+                        </div>
+<div class="p-4 flex items-center font-body-md text-body-md text-on-surface">
+                            36 Months <span class="ml-2 text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-tighter">(Best)</span>
+</div>
+</div>
+<!-- Row: Technical Compliance -->
+<div class="grid grid-cols-4 border-b border-surface-container-high hover:bg-surface-container/30 transition-colors">
+<div class="p-4 border-r border-surface-container-high flex items-center pl-6">
+<span class="font-body-md text-body-md text-on-surface-variant">Tech Compliance</span>
+</div>
+<div class="p-4 border-r border-surface-container-high flex items-center gap-2 bg-primary/5">
+<span class="material-symbols-outlined text-emerald-400 fill">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">100% Compliant</span>
+</div>
+<div class="p-4 border-r border-surface-container-high flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-400 fill">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">100% Compliant</span>
+</div>
+<div class="p-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-surface-tint fill">warning</span>
+<span class="font-body-md text-body-md text-on-surface">Minor Deviation</span>
+</div>
+</div>
+<!-- Row: Payment Terms -->
+<div class="grid grid-cols-4 border-b border-surface-container-high hover:bg-surface-container/30 transition-colors">
+<div class="p-4 border-r border-surface-container-high flex items-center pl-6">
+<span class="font-body-md text-body-md text-on-surface-variant">Payment Terms</span>
+</div>
+<div class="p-4 border-r border-surface-container-high flex items-center font-body-md text-body-md text-on-surface bg-primary/5">
+                            30% Adv, 70% LC
+                        </div>
+<div class="p-4 border-r border-surface-container-high flex items-center font-body-md text-body-md text-on-surface">
+                            100% LC at Sight
+                        </div>
+<div class="p-4 flex items-center font-body-md text-body-md text-on-surface">
+                            20% Adv, 80% Net 30
+                        </div>
+</div>
+</div>
+<!-- Matrix Footer (Actions) -->
+<div class="grid grid-cols-4 bg-surface-container-lowest">
+<div class="p-6 border-r border-surface-container-high">
+<!-- Empty corner -->
+</div>
+<!-- L1 Actions -->
+<div class="p-6 border-r border-surface-container-high bg-primary/5 flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-bold font-label-md py-4 px-4 rounded-lg shadow-[0px_8px_24px_rgba(197,160,40,0.3)] hover:shadow-[0px_8px_32px_rgba(197,160,40,0.5)] transition-all flex justify-center items-center gap-2 uppercase tracking-wide">
+<span class="material-symbols-outlined text-[20px]">workspace_premium</span>
+                            Award Contract
+                        </button>
+<button class="w-full border border-primary text-primary hover:bg-primary/10 font-label-md text-label-md py-2 px-4 rounded-lg transition-all">
+                            Request Clarification
+                        </button>
+</div>
+<!-- L2 Actions -->
+<div class="p-6 border-r border-surface-container-high flex flex-col gap-3">
+<button class="w-full border border-outline text-on-surface hover:bg-surface-container font-label-md text-label-md py-3 px-4 rounded-lg transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">reply</span>
+                            Send Counter-Offer
+                        </button>
+<button class="w-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md py-2 px-4 rounded-lg transition-all">
+                            View Full Bid
+                        </button>
+</div>
+<!-- L3 Actions -->
+<div class="p-6 flex flex-col gap-3">
+<button class="w-full border border-outline text-on-surface hover:bg-surface-container font-label-md text-label-md py-3 px-4 rounded-lg transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">reply</span>
+                            Send Counter-Offer
+                        </button>
+<button class="w-full text-error hover:bg-error/10 font-label-md text-label-md py-2 px-4 rounded-lg transition-all mt-auto">
+                            Reject Bid
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

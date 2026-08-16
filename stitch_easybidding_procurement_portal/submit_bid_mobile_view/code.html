@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EasyBidding - Submit Bid</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#ffe08b",
+                      "surface-bright": "#353946",
+                      "on-tertiary-fixed-variant": "#40465e",
+                      "tertiary-fixed": "#dce1ff",
+                      "inverse-on-surface": "#2c303d",
+                      "on-error-container": "#ffdad6",
+                      "surface-dim": "#0f131f",
+                      "on-surface-variant": "#d0c5af",
+                      "tertiary": "#c0c5e2",
+                      "surface-variant": "#313442",
+                      "error-container": "#93000a",
+                      "on-primary-container": "#493800",
+                      "on-primary": "#3d2f00",
+                      "on-secondary-fixed": "#161b2c",
+                      "outline-variant": "#4d4635",
+                      "outline": "#99907c",
+                      "surface-container": "#1b1f2c",
+                      "primary-container": "#c5a028",
+                      "on-primary-fixed-variant": "#584400",
+                      "inverse-primary": "#745b00",
+                      "surface-container-low": "#171b28",
+                      "background": "#0f131f",
+                      "surface-container-high": "#262a37",
+                      "on-secondary": "#2b3042",
+                      "tertiary-fixed-dim": "#c0c5e2",
+                      "surface-tint": "#eac249",
+                      "on-surface": "#dfe2f3",
+                      "error": "#ffb4ab",
+                      "primary": "#eac249",
+                      "secondary": "#c1c5dd",
+                      "on-tertiary": "#292f46",
+                      "surface-container-lowest": "#0a0e1a",
+                      "tertiary-container": "#9da3bf",
+                      "on-tertiary-container": "#333950",
+                      "surface": "#0f131f",
+                      "on-primary-fixed": "#241a00",
+                      "surface-container-highest": "#313442",
+                      "inverse-surface": "#dfe2f3",
+                      "on-background": "#dfe2f3",
+                      "secondary-fixed": "#dde1f9",
+                      "on-secondary-fixed-variant": "#414659",
+                      "on-tertiary-fixed": "#141a30",
+                      "primary-fixed-dim": "#eac249",
+                      "secondary-container": "#414659",
+                      "secondary-fixed-dim": "#c1c5dd",
+                      "on-secondary-container": "#b0b4cb",
+                      "on-error": "#690005"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "card-padding": "20px",
+                      "unit": "4px",
+                      "sidebar-width": "280px",
+                      "container-margin": "24px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-sm": ["JetBrains Mono"],
+                      "headline-md": ["Inter"],
+                      "label-md": ["JetBrains Mono"],
+                      "body-sm": ["Inter"],
+                      "display-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Hide scrollbar for clean mobile UI but allow scroll */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Auto-calculate total visual logic (simulated for UI purposes) */
+        .calculated-glow {
+            animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse-border {
+            0%, 100% { border-color: theme('colors.outline-variant'); }
+            50% { border-color: theme('colors.primary'); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation (Mobile optimized back arrow header) -->
+<header class="sticky top-0 z-50 bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant px-[16px] h-16 flex items-center justify-between">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-variant text-on-surface hover:bg-surface-container-highest transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-weight="regular">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="font-headline-md text-[18px] leading-tight text-on-surface">Submit Bid</h1>
+<span class="font-label-sm text-on-surface-variant">RFQ-2024-089</span>
+</div>
+<div class="w-10 h-10"></div> <!-- Balancer for flex -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-[16px] py-[24px] flex flex-col gap-6 pb-[100px]">
+<!-- RFQ Summary Card (Glassmorphic Accent) -->
+<section class="bg-on-secondary-fixed rounded-xl p-[20px] border border-surface-variant relative overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none"></div>
+<div class="flex justify-between items-start mb-4">
+<h2 class="font-label-md text-primary uppercase tracking-wider">Requirement Summary</h2>
+<span class="material-symbols-outlined text-primary" data-weight="fill">assignment</span>
+</div>
+<div class="flex flex-col gap-3">
+<div>
+<p class="font-body-sm text-on-surface-variant mb-1">Item Name</p>
+<p class="font-headline-md text-[18px] text-on-surface">Heavy Duty Hydraulic Pump</p>
+</div>
+<div class="grid grid-cols-2 gap-4 border-t border-surface-variant pt-3 mt-1">
+<div>
+<p class="font-body-sm text-on-surface-variant mb-1">Quantity Req.</p>
+<p class="font-label-md text-[16px] text-on-surface">5 Units</p>
+</div>
+<div>
+<p class="font-body-sm text-on-surface-variant mb-1">Target Delivery</p>
+<p class="font-label-md text-[16px] text-on-surface">Q3 2024</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bid Submission Form -->
+<section class="flex flex-col gap-5">
+<h3 class="font-headline-md text-[20px] text-on-surface border-b border-surface-variant pb-2">Financial Proposal</h3>
+<!-- Unit Price Input -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-on-surface-variant" for="unit-price">Unit Price (USD)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-label-md text-on-surface-variant">$</span>
+<input class="w-full bg-surface-container-high border border-surface-variant rounded-lg py-3 pl-8 pr-4 font-label-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder:text-on-surface-variant/50" id="unit-price" placeholder="0.00" type="number"/>
+</div>
+</div>
+<!-- Total Price (Auto-calculated UI treatment) -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-on-surface-variant flex justify-between">
+<span>Total Bid Amount</span>
+<span class="text-[10px] bg-surface-variant px-2 py-0.5 rounded text-primary">Auto-Calc</span>
+</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-label-md text-primary">$</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg py-3 pl-8 pr-4 font-headline-md text-[20px] text-primary focus:outline-none calculated-glow cursor-not-allowed" readonly="" type="text" value="0.00"/>
+</div>
+<p class="font-body-sm text-on-surface-variant text-[12px] mt-1">Based on 5 units requested.</p>
+</div>
+<div class="w-full h-px bg-surface-variant my-2"></div>
+<h3 class="font-headline-md text-[20px] text-on-surface border-b border-surface-variant pb-2">Logistics &amp; Specs</h3>
+<!-- Delivery Lead Time -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-on-surface-variant" for="lead-time">Delivery Lead Time (Weeks)</label>
+<input class="w-full bg-surface-container-high border border-surface-variant rounded-lg py-3 px-4 font-label-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="lead-time" placeholder="e.g., 4" type="number"/>
+</div>
+<!-- File Upload Section -->
+<div class="flex flex-col gap-2 mt-2">
+<label class="font-label-md text-on-surface-variant">Technical Specifications</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl bg-surface-container p-6 flex flex-col items-center justify-center gap-3 active:bg-surface-variant transition-colors cursor-pointer" id="upload-zone">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-weight="regular">upload_file</span>
+</div>
+<div class="text-center">
+<p class="font-label-md text-primary">Tap to upload catalog</p>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-1">PDF, DOCX max 10MB</p>
+</div>
+</div>
+<!-- Dummy uploaded file state (hidden by default, shown for UI demonstration if needed, keeping simple for initial load) -->
+<div class="hidden bg-surface-container-high rounded-lg p-3 flex items-center justify-between border border-surface-variant">
+<div class="flex items-center gap-3 overflow-hidden">
+<span class="material-symbols-outlined text-error" data-weight="fill">picture_as_pdf</span>
+<div class="flex flex-col truncate">
+<span class="font-label-sm text-on-surface truncate">pump_specs_v2.pdf</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">2.4 MB</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]" data-weight="regular">close</span>
+</button>
+</div>
+</div>
+<!-- Remarks -->
+<div class="flex flex-col gap-2 mt-2">
+<label class="font-label-md text-on-surface-variant" for="remarks">Additional Remarks (Optional)</label>
+<textarea class="w-full bg-surface-container-high border border-surface-variant rounded-lg py-3 px-4 font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none" id="remarks" placeholder="Enter any conditions or notes..." rows="3"></textarea>
+</div>
+</section>
+</main>
+<!-- Bottom Fixed Action Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest/95 backdrop-blur-xl border-t border-surface-variant p-[16px] pb-safe z-50">
+<button class="w-full bg-primary-container text-on-primary-container font-headline-md text-[16px] py-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary transition-colors active:scale-[0.98] shadow-[0_4px_12px_rgba(197,160,40,0.2)]">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">send</span>
+            Submit Formal Bid
+        </button>
+</div>
+<!-- Inline script for simulated auto-calculation interaction -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const unitPriceInput = document.getElementById('unit-price');
+            const totalInput = document.querySelector('input[readonly]');
+            const quantity = 5; // Hardcoded from requirements
+            
+            if(unitPriceInput && totalInput) {
+                unitPriceInput.addEventListener('input', (e) => {
+                    const val = parseFloat(e.target.value);
+                    if(!isNaN(val)) {
+                        const total = (val * quantity).toFixed(2);
+                        // Format with commas for display
+                        totalInput.value = parseFloat(total).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                    } else {
+                        totalInput.value = "0.00";
+                    }
+                });
+            }
+        });
+    </script>
+</body></html>

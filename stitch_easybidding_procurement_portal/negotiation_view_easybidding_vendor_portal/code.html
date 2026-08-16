@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EasyBidding - Negotiation View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary": "#3d2f00",
+                      "inverse-surface": "#dfe2f3",
+                      "surface-container": "#1b1f2c",
+                      "on-tertiary": "#292f46",
+                      "tertiary-fixed": "#dce1ff",
+                      "outline-variant": "#4d4635",
+                      "on-secondary": "#2b3042",
+                      "on-secondary-container": "#b0b4cb",
+                      "error-container": "#93000a",
+                      "secondary-fixed": "#dde1f9",
+                      "surface-tint": "#eac249",
+                      "surface-bright": "#353946",
+                      "surface-container-lowest": "#0a0e1a",
+                      "primary-fixed": "#ffe08b",
+                      "on-primary-fixed": "#241a00",
+                      "secondary": "#c1c5dd",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-low": "#171b28",
+                      "surface": "#0f131f",
+                      "outline": "#99907c",
+                      "surface-container-highest": "#313442",
+                      "inverse-primary": "#745b00",
+                      "on-surface": "#dfe2f3",
+                      "error": "#ffb4ab",
+                      "on-error": "#690005",
+                      "on-secondary-fixed": "#161b2c",
+                      "inverse-on-surface": "#2c303d",
+                      "secondary-fixed-dim": "#c1c5dd",
+                      "background": "#0f131f",
+                      "on-background": "#dfe2f3",
+                      "surface-dim": "#0f131f",
+                      "tertiary-container": "#9da3bf",
+                      "tertiary-fixed-dim": "#c0c5e2",
+                      "on-tertiary-fixed": "#141a30",
+                      "on-tertiary-fixed-variant": "#40465e",
+                      "tertiary": "#c0c5e2",
+                      "secondary-container": "#414659",
+                      "primary": "#eac249",
+                      "surface-variant": "#313442",
+                      "on-tertiary-container": "#333950",
+                      "on-primary-container": "#493800",
+                      "surface-container-high": "#262a37",
+                      "on-secondary-fixed-variant": "#414659",
+                      "primary-container": "#c5a028",
+                      "primary-fixed-dim": "#eac249",
+                      "on-surface-variant": "#d0c5af",
+                      "on-primary-fixed-variant": "#584400"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-margin": "24px",
+                      "unit": "4px",
+                      "card-padding": "20px",
+                      "sidebar-width": "280px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- Side Navigation -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container dark:bg-surface-container border-r border-outline-variant shadow-none hidden md:flex flex-col py-container-margin px-gutter z-40">
+<div class="mb-8 px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary font-headline-md">gavel</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">EasyBidding</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Vendor Portal</p>
+</div>
+</div>
+<button class="mb-8 w-full bg-primary-container hover:bg-primary text-on-primary-container font-label-md text-label-md font-bold py-3 px-4 rounded-DEFAULT transition-colors flex items-center justify-center gap-2 active:scale-95 duration-150">
+<span class="material-symbols-outlined">add</span>
+            New Bid
+        </button>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-150 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-150 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">request_quote</span>
+                Open RFQs
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-primary font-bold hover:bg-surface-container-high transition-colors active:scale-95 duration-150 font-body-md text-body-md bg-surface-container-high border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+                Submitted Bids
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-150 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">help</span>
+                Support
+            </a>
+<div class="flex items-center gap-3 px-4 py-2 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                Secured Connection
+            </div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-[280px] flex flex-col min-h-screen">
+<!-- Top App Bar (Mobile Nav Alternative & Actions) -->
+<header class="sticky top-0 z-30 bg-surface/80 backdrop-blur-md border-b border-outline-variant px-container-margin h-16 flex items-center justify-between">
+<div class="flex items-center gap-4 md:hidden">
+<span class="material-symbols-outlined text-primary font-headline-md">gavel</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">EasyBidding</span>
+</div>
+<div class="hidden md:flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Active Negotiation:</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">RFQ-2023-9042</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors focus:ring-2 focus:ring-primary rounded-full p-1 outline-none">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+<img alt="Vendor Profile" class="w-full h-full object-cover" data-alt="A macro shot of a metallic industrial gear with a warm light-mode aesthetic, emphasizing precision and reliability in a professional procurement setting. The image is highly detailed, showing subtle reflections on the machined surface against a dark, moody background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsK1ByA914ZCktfAS7PWghFNIsEwtfe9fM0b6fCbjpR4Ry13yfKb2daevll262iIHphkuSEjGEMRiq-MZFX5Uc8siSS_lbzzE_wdHdZRZBnIuvQUTfnppCCd36hXhIXUxRkwzPGO6lJKiriFUA-qcrGmQs3kXi2YtQYkIrZfZziZTg5LAtkTrBuCblUHE45wJ4X7KpgHQgL-tPSUrMOFggItzeEaaN8yRuz6hrh0lMFSaGUFdhKfn6YQ"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-container-margin md:p-container-margin flex-1">
+<!-- Negotiation Header -->
+<div class="mb-8 flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="px-3 py-1 bg-primary/10 border border-primary/30 text-primary rounded-full font-label-sm text-label-sm uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+                            Counter-Offer Received
+                        </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Updated 2 hours ago</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">High-Precision Titanium Shafts</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                        Review the latest counter-offer from the buyer. Note the adjustments requested on unit rate and delivery schedule to meet project timelines.
+                    </p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Thread & Comparison -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Term Comparison Card -->
+<div class="bg-surface-container border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="p-card-padding border-b border-outline-variant bg-surface-container-high/50 flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">compare_arrows</span>
+                                Terms Comparison
+                            </h3>
+<button class="text-primary font-label-md text-label-md hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">download</span>
+                                Export PDF
+                            </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high font-label-md text-label-md text-on-surface-variant border-b border-outline-variant">
+<th class="p-4 font-normal">Term / Metric</th>
+<th class="p-4 font-normal border-l border-outline-variant">Your Last Bid</th>
+<th class="p-4 font-normal border-l border-outline-variant">Admin Counter-Offer</th>
+<th class="p-4 font-normal border-l border-outline-variant">Variance</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface divide-y divide-outline-variant">
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="p-4 font-label-md text-label-md">Unit Rate (USD)</td>
+<td class="p-4 border-l border-outline-variant font-label-md">$1,250.00</td>
+<td class="p-4 border-l border-outline-variant font-label-md text-primary bg-primary/5">$1,180.00</td>
+<td class="p-4 border-l border-outline-variant font-label-sm text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+                                            -5.6%
+                                        </td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="p-4 font-label-md text-label-md">Volume (Units)</td>
+<td class="p-4 border-l border-outline-variant font-label-md">500</td>
+<td class="p-4 border-l border-outline-variant font-label-md">500</td>
+<td class="p-4 border-l border-outline-variant font-label-sm text-on-surface-variant">
+                                            No Change
+                                        </td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="p-4 font-label-md text-label-md">Lead Time (Weeks)</td>
+<td class="p-4 border-l border-outline-variant font-label-md">12 Weeks</td>
+<td class="p-4 border-l border-outline-variant font-label-md text-primary bg-primary/5">10 Weeks</td>
+<td class="p-4 border-l border-outline-variant font-label-sm text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">speed</span>
+                                            Faster
+                                        </td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="p-4 font-label-md text-label-md">Payment Terms</td>
+<td class="p-4 border-l border-outline-variant font-label-md">Net 30</td>
+<td class="p-4 border-l border-outline-variant font-label-md">Net 45</td>
+<td class="p-4 border-l border-outline-variant font-label-sm text-error flex items-center gap-1">
+                                            Extended
+                                        </td>
+</tr>
+<tr class="bg-surface-container-high/30">
+<td class="p-4 font-headline-md text-headline-md">Total Contract Value</td>
+<td class="p-4 border-l border-outline-variant font-headline-md text-on-surface-variant">$625,000</td>
+<td class="p-4 border-l border-outline-variant font-headline-md text-primary">$590,000</td>
+<td class="p-4 border-l border-outline-variant font-label-sm text-error">
+                                            -$35,000
+                                        </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Negotiation Thread -->
+<div class="bg-surface-container border border-outline-variant rounded-xl shadow-sm p-card-padding">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                            Negotiation History
+                        </h3>
+<div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-outline-variant">
+<!-- Buyer Counter -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+<div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-surface-container bg-surface-container-high text-primary shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-primary/30 bg-surface-container-high/50 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-primary">Buyer (Admin)</span>
+<time class="font-label-sm text-label-sm text-on-surface-variant">Oct 24, 14:30</time>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mb-3">
+                                        "We appreciate the bid. However, to align with our Q4 budget constraints and expedited project timeline, we need to request a slight reduction in unit rate and a compressed lead time. See revised terms."
+                                    </p>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline-variant font-label-sm text-label-sm">
+<span class="text-on-surface-variant block mb-1">Attached Note:</span>
+<span class="text-on-surface">If 10 weeks is unfeasible, we can discuss partial shipments.</span>
+</div>
+</div>
+</div>
+<!-- Vendor Original Bid -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+<div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-surface-container bg-surface-container-high text-on-surface-variant shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-outline-variant bg-surface-container shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface">You (Vendor)</span>
+<time class="font-label-sm text-label-sm text-on-surface-variant">Oct 22, 09:15</time>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                                        Initial bid submitted for 500 units at $1,250/unit with a 12-week lead time. Standard Net 30 payment terms applied.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Action Panel -->
+<div class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container border border-primary/30 rounded-xl shadow-[0_8px_24px_rgba(0,0,0,0.5)] p-card-padding sticky top-24">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Your Response</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">
+                            Review the counter-offer carefully. Accepting will finalize the terms and initiate contract generation.
+                        </p>
+<div class="space-y-4">
+<button class="w-full bg-primary-container hover:bg-primary text-on-primary-container font-label-md text-label-md font-bold py-3 px-4 rounded-DEFAULT transition-all shadow-sm flex items-center justify-center gap-2 active:scale-95 duration-150">
+<span class="material-symbols-outlined">check_circle</span>
+                                Accept Counter-Offer
+                            </button>
+<button class="w-full bg-transparent border-2 border-primary text-primary hover:bg-primary/10 font-label-md text-label-md font-bold py-3 px-4 rounded-DEFAULT transition-colors flex items-center justify-center gap-2 active:scale-95 duration-150">
+<span class="material-symbols-outlined">edit_document</span>
+                                Submit New Counter
+                            </button>
+<div class="pt-4 border-t border-outline-variant">
+<button class="w-full bg-transparent border border-error-container text-error hover:bg-error-container/20 font-label-md text-label-md py-3 px-4 rounded-DEFAULT transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">cancel</span>
+                                    Withdraw Bid
+                                </button>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-center mt-3">
+                                    Offer expires in 48h 12m
+                                </p>
+</div>
+</div>
+</div>
+<!-- Market Context Card (Optional visual flair) -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-card-padding">
+<h4 class="font-label-md text-label-md text-on-surface mb-3 uppercase tracking-wider">Internal Note</h4>
+<div class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary mb-2 block">info</span>
+                            Current titanium raw material index is trending upward (+2.4% MoM). Consider locking in this contract to secure volume before further price hikes.
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

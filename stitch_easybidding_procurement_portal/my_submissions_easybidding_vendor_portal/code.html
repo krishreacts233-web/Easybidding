@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Submissions - EasyBidding Vendor Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#dfe2f3",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#ffe08b",
+                      "tertiary-fixed": "#dce1ff",
+                      "surface-container-lowest": "#0a0e1a",
+                      "on-primary-fixed-variant": "#584400",
+                      "on-surface": "#dfe2f3",
+                      "on-primary-container": "#493800",
+                      "on-primary-fixed": "#241a00",
+                      "on-error-container": "#ffdad6",
+                      "on-error": "#690005",
+                      "surface-tint": "#eac249",
+                      "surface-bright": "#353946",
+                      "secondary-fixed-dim": "#c1c5dd",
+                      "on-surface-variant": "#d0c5af",
+                      "outline-variant": "#4d4635",
+                      "on-background": "#dfe2f3",
+                      "secondary": "#c1c5dd",
+                      "tertiary-fixed-dim": "#c0c5e2",
+                      "on-tertiary-fixed-variant": "#40465e",
+                      "on-tertiary-fixed": "#141a30",
+                      "surface": "#0f131f",
+                      "on-tertiary": "#292f46",
+                      "on-secondary": "#2b3042",
+                      "on-secondary-fixed": "#161b2c",
+                      "primary-fixed-dim": "#eac249",
+                      "surface-variant": "#313442",
+                      "on-secondary-container": "#b0b4cb",
+                      "inverse-primary": "#745b00",
+                      "secondary-container": "#414659",
+                      "tertiary-container": "#9da3bf",
+                      "primary-container": "#c5a028",
+                      "surface-container-highest": "#313442",
+                      "secondary-fixed": "#dde1f9",
+                      "surface-container-high": "#262a37",
+                      "background": "#0f131f",
+                      "surface-container": "#1b1f2c",
+                      "on-tertiary-container": "#333950",
+                      "inverse-on-surface": "#2c303d",
+                      "primary": "#eac249",
+                      "surface-dim": "#0f131f",
+                      "on-primary": "#3d2f00",
+                      "outline": "#99907c",
+                      "surface-container-low": "#171b28",
+                      "tertiary": "#c0c5e2",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#414659"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "card-padding": "20px",
+                      "container-margin": "24px",
+                      "sidebar-width": "280px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom Scrollbar for data tables */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0e1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #313442;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #414659;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-280px)] z-50 bg-surface/40 backdrop-blur-md dark:bg-surface/40 border-b border-outline-variant shadow-sm flex justify-between items-center h-16 px-container-margin">
+<div class="flex items-center gap-4 w-full max-w-md focus-within:ring-2 focus-within:ring-primary rounded-DEFAULT bg-surface-container-highest px-3 py-2 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="w-full bg-transparent border-none text-on-surface placeholder-on-surface-variant font-label-md text-label-md focus:ring-0 p-0" placeholder="Search RFQs, Bids, or Documents..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-all relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+<div class="h-8 w-px bg-outline-variant hidden sm:block"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<img alt="Vendor Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover group-hover:border-primary transition-colors" data-alt="A macro shot of a sleek, dark metallic industrial surface with highly technical, precise mechanical detailing. The lighting is dramatic and low-key, highlighting edges and textures, reflecting the modern, authoritative, and secure nature of an industrial procurement system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdsu2Xjm5WUxb4eftXySbsWiTnOy6VMA32uyRb6J8YSHQ_k5rZXR_ULBJBuEeHyQglREeXAqUUOZ1oU85vyEbs_u-iti8ILFurDyvZNKXX0KYl5LNef2NmT_1mW1sY8pCwSoy8CWvVpCxSWa_JCOLhlBcnwKSo3_zVqB_LpzAKXOHvJlWuS3JA2VZs_tIsCyGwuCXdrz5ITkX-EC0pKVnuUsQWOpM4-7SoexE-6yf3xI-BbCkLN5E2Pg"/>
+<div class="hidden sm:block">
+<p class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">TechCorp Heavy Industries</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Vendor ID: V-8892</p>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container dark:bg-surface-container border-r border-outline-variant shadow-none flex flex-col py-container-margin px-gutter hidden md:flex z-40">
+<div class="flex items-center gap-3 mb-8 px-4">
+<div class="w-10 h-10 bg-primary-container rounded-DEFAULT flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined fill text-on-primary-container">factory</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary leading-none tracking-tight">EasyBidding</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1 uppercase tracking-widest">Vendor Portal</p>
+</div>
+</div>
+<button class="mb-8 w-full bg-primary-container text-on-primary-container font-label-md text-label-md font-bold py-3 px-4 rounded-DEFAULT flex items-center justify-center gap-2 hover:bg-primary transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">add</span>
+            New Bid
+        </button>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-150 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-150 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+                Open RFQs
+                <span class="ml-auto bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded-full">12</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-primary font-bold bg-surface-container-high font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined fill" data-icon="assignment_turned_in">assignment_turned_in</span>
+                Submitted Bids
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-150 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto space-y-2 pt-6 border-t border-outline-variant">
+<a class="flex items-center gap-3 px-4 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="help">help</span>
+                Support
+            </a>
+<div class="flex items-center gap-3 px-4 py-2 rounded-DEFAULT text-primary/70 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xl fill" data-icon="verified_user">verified_user</span>
+                Secured Connection
+            </div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-[280px] pt-16 min-h-screen p-container-margin md:p-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">My Submissions</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Review and track the status of your historical and active bids.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md py-2 px-4 rounded-DEFAULT flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                    Export CSV
+                </button>
+</div>
+</div>
+<!-- Filter Bar (Glassmorphic Container) -->
+<div class="bg-surface-container/60 backdrop-blur-md border border-outline-variant rounded-lg p-card-padding mb-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<!-- Status Filter -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Status</label>
+<div class="relative">
+<select class="w-full bg-surface-container-highest border border-outline-variant text-on-surface font-label-md text-label-md rounded-DEFAULT py-2 pl-3 pr-10 appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
+<option value="all">All Statuses</option>
+<option value="pending">Pending / Under Review</option>
+<option value="won">Won / Awarded</option>
+<option value="lost">Lost / Not Selected</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Date Range Filter -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Date Range</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border border-outline-variant text-on-surface font-label-md text-label-md rounded-DEFAULT py-2 pl-10 pr-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors cursor-pointer" placeholder="Last 90 Days" readonly="" type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">calendar_month</span>
+</div>
+</div>
+<!-- Department Filter -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Department</label>
+<div class="relative">
+<select class="w-full bg-surface-container-highest border border-outline-variant text-on-surface font-label-md text-label-md rounded-DEFAULT py-2 pl-3 pr-10 appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
+<option value="all">All Departments</option>
+<option value="engineering">Engineering</option>
+<option value="manufacturing">Manufacturing</option>
+<option value="facilities">Facilities</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Search/Apply -->
+<div class="flex items-end">
+<button class="w-full bg-surface-container border border-outline-variant text-on-surface hover:text-primary hover:border-primary font-label-md text-label-md py-2 px-4 rounded-DEFAULT transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+                        Apply Filters
+                    </button>
+</div>
+</div>
+</div>
+<!-- Data Table (High Density) -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg overflow-hidden flex flex-col relative z-10 shadow-[0px_8px_24px_rgba(0,0,0,0.5)]">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse whitespace-nowrap">
+<thead class="bg-surface-container border-b border-outline-variant">
+<tr>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Bid ID</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">RFQ Reference</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Submitted Date</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Total Quote</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Counter-offer</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-label-md text-label-md">
+<!-- Row 1: Under Review -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="py-3 px-4 text-primary font-bold cursor-pointer group-hover:underline">BID-2023-8901</td>
+<td class="py-3 px-4 text-on-surface">RFQ-ENG-442-A</td>
+<td class="py-3 px-4 text-on-surface-variant">2023-10-24 14:30</td>
+<td class="py-3 px-4 text-right font-mono">$142,500.00</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                    Under Review
+                                </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">-</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Shortlisted -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="py-3 px-4 text-primary font-bold cursor-pointer group-hover:underline">BID-2023-8892</td>
+<td class="py-3 px-4 text-on-surface">RFQ-MFG-109-B</td>
+<td class="py-3 px-4 text-on-surface-variant">2023-10-18 09:15</td>
+<td class="py-3 px-4 text-right font-mono">$89,200.00</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/20 border border-tertiary-container text-tertiary-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed"></span>
+                                    Shortlisted
+                                </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">-</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Counter-Offer -->
+<tr class="hover:bg-surface-container-highest transition-colors group bg-primary/5">
+<td class="py-3 px-4 text-primary font-bold cursor-pointer group-hover:underline">BID-2023-8845</td>
+<td class="py-3 px-4 text-on-surface">RFQ-FAC-992-C</td>
+<td class="py-3 px-4 text-on-surface-variant">2023-10-12 16:45</td>
+<td class="py-3 px-4 text-right font-mono line-through text-on-surface-variant">$55,000.00</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                                    Action Required
+                                </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-primary font-bold">$52,500.00</span>
+<span class="material-symbols-outlined text-[16px] text-primary cursor-help" title="Buyer proposed counter-offer">info</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="bg-primary text-on-primary font-label-sm px-3 py-1 rounded-sm hover:bg-primary-container transition-colors">Review</button>
+</td>
+</tr>
+<!-- Row 4: Awarded -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="py-3 px-4 text-primary font-bold cursor-pointer group-hover:underline">BID-2023-8750</td>
+<td class="py-3 px-4 text-on-surface">RFQ-ENG-410-A</td>
+<td class="py-3 px-4 text-on-surface-variant">2023-09-28 11:20</td>
+<td class="py-3 px-4 text-right font-mono">$210,000.00</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] fill text-primary">verified</span>
+                                    Awarded
+                                </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">-</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Not Selected -->
+<tr class="hover:bg-surface-container-highest transition-colors group opacity-75">
+<td class="py-3 px-4 text-primary font-bold cursor-pointer group-hover:underline">BID-2023-8712</td>
+<td class="py-3 px-4 text-on-surface">RFQ-MFG-088-D</td>
+<td class="py-3 px-4 text-on-surface-variant">2023-09-15 10:05</td>
+<td class="py-3 px-4 text-right font-mono text-on-surface-variant">$42,800.00</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container/10 border border-error-container/30 text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                    Not Selected
+                                </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">-</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="bg-surface-container border-t border-outline-variant px-4 py-3 flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Showing 1 to 5 of 42 entries</span>
+<div class="flex items-center gap-2">
+<button class="p-1 rounded-DEFAULT hover:bg-surface-container-highest text-on-surface-variant transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-DEFAULT bg-primary text-on-primary font-label-md flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-DEFAULT hover:bg-surface-container-highest text-on-surface-variant font-label-md flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded-DEFAULT hover:bg-surface-container-highest text-on-surface-variant font-label-md flex items-center justify-center transition-colors">3</button>
+<span class="text-on-surface-variant">...</span>
+<button class="p-1 rounded-DEFAULT hover:bg-surface-container-highest text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EasyBidding - System Audit Logs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#b0b4cb",
+                        "on-background": "#dfe2f3",
+                        "surface": "#0f131f",
+                        "on-tertiary-container": "#333950",
+                        "on-primary": "#3d2f00",
+                        "inverse-on-surface": "#2c303d",
+                        "on-primary-container": "#493800",
+                        "inverse-primary": "#745b00",
+                        "primary": "#eac249",
+                        "surface-container-high": "#262a37",
+                        "on-tertiary-fixed-variant": "#40465e",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#9da3bf",
+                        "surface-dim": "#0f131f",
+                        "surface-tint": "#eac249",
+                        "on-surface-variant": "#d0c5af",
+                        "on-tertiary-fixed": "#141a30",
+                        "surface-variant": "#313442",
+                        "on-secondary-fixed": "#161b2c",
+                        "on-secondary": "#2b3042",
+                        "outline": "#99907c",
+                        "surface-container-low": "#171b28",
+                        "surface-bright": "#353946",
+                        "primary-fixed": "#ffe08b",
+                        "on-primary-fixed": "#241a00",
+                        "tertiary": "#c0c5e2",
+                        "on-tertiary": "#292f46",
+                        "secondary-fixed": "#dde1f9",
+                        "primary-fixed-dim": "#eac249",
+                        "error-container": "#93000a",
+                        "surface-container": "#1b1f2c",
+                        "tertiary-fixed": "#dce1ff",
+                        "primary-container": "#c5a028",
+                        "outline-variant": "#4d4635",
+                        "on-primary-fixed-variant": "#584400",
+                        "secondary-fixed-dim": "#c1c5dd",
+                        "secondary": "#c1c5dd",
+                        "on-surface": "#dfe2f3",
+                        "on-secondary-fixed-variant": "#414659",
+                        "inverse-surface": "#dfe2f3",
+                        "tertiary-fixed-dim": "#c0c5e2",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0a0e1a",
+                        "secondary-container": "#414659",
+                        "background": "#0f131f",
+                        "surface-container-highest": "#313442",
+                        "success": "#4ade80",
+                        "success-container": "#064e3b",
+                        "warning": "#eab308",
+                        "warning-container": "#713f12"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sidebar-width": "280px",
+                        "unit": "4px",
+                        "card-padding": "20px",
+                        "container-margin": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0e1a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262a37; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #313442; 
+        }
+        .glass-panel {
+            background: rgba(45, 51, 74, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased overflow-hidden h-screen flex flex-col md:flex-row">
+<!-- Mobile Top Navigation (Visible only on md:hidden) -->
+<header class="md:hidden flex justify-between items-center h-16 px-container-margin w-full bg-surface/80 backdrop-blur-md border-b border-outline-variant shadow-sm docked top-0 sticky z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl">account_balance</span>
+<span class="font-headline-sm text-headline-sm font-black text-primary">EasyBidding</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-highest/50 rounded-lg p-2 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small, professional headshot of an executive in a dark suit against a neutral gray background. The lighting is soft and studio quality. High end corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGtFQs2QPS2n4Ru_5B65uCSco2-oqSRSc4rVxrhSQY0J-_kzsoUEEazUanOdH7xOtVq9oA3GczsNyN41CEji-Mxp0C4cNkY3A1-Z9yQksfrU7H93Ak8ze7nLI8-vIGSXMY8hvSwNhj3Kq4dUerlSco5vAt8WQ5Fnhh7mz_lMf2a6g3c_pvK2S4dWw2SPY6O6fKGbyl0Mji0ZJSqF10HJ44gUvqNC9Gii0KiDJQQVq7FhYSoJFZ2rGZug"/>
+</div>
+</header>
+<!-- SideNavBar (Visible on md:flex) -->
+<nav class="hidden md:flex w-sidebar-width h-screen sticky left-0 top-0 bg-surface-container border-r border-outline-variant flex-col py-unit shrink-0 z-40">
+<!-- Brand Header -->
+<div class="px-6 py-6 border-b border-surface-container-high flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary/10 rounded flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">hexagon</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">EasyBidding</span>
+</div>
+<span class="text-on-surface-variant text-sm font-medium tracking-wide">Industrial Procurement</span>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-4 px-3 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">fact_check</span>
+<span class="font-label-md text-label-md">Approvals</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">group</span>
+<span class="font-label-md text-label-md">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">domain</span>
+<span class="font-label-md text-label-md">Departments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">factory</span>
+<span class="font-label-md text-label-md">Vendor Master</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">inventory_2</span>
+<span class="font-label-md text-label-md">Item Master</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">shopping_cart</span>
+<span class="font-label-md text-label-md">Purchase</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">request_quote</span>
+<span class="font-label-md text-label-md">Vendor Quotations</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">compare</span>
+<span class="font-label-md text-label-md">Comparison</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">query_stats</span>
+<span class="font-label-md text-label-md">Status</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">notifications</span>
+<span class="font-label-md text-label-md">Notifications</span>
+</a>
+<!-- ACTIVE STATE -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary font-bold border-l-4 border-primary bg-secondary-container/10 transition-transform active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-label-md text-label-md">Audit Log</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<!-- Footer Actions -->
+<div class="px-4 py-4 mt-auto border-t border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center justify-center gap-2 py-2 px-3 bg-surface-container-highest rounded-md border border-surface-bright">
+<span class="material-symbols-outlined text-success text-sm" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="text-xs font-label-md text-on-surface-variant">Secured Connection</span>
+</div>
+<button class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-error hover:bg-error-container/20 transition-colors duration-200 w-full text-left">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</button>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+<!-- Header Section -->
+<header class="px-container-margin py-6 border-b border-surface-container shrink-0 bg-surface-container-lowest/80 backdrop-blur-md sticky top-0 z-30">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-1">System Audit Logs</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Comprehensive record of all system activities and administrative actions.</p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant text-on-surface rounded-lg hover:bg-surface-container-high transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">description</span>
+                        Export CSV
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high border border-outline-variant text-primary rounded-lg hover:bg-surface-bright transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+                        Export PDF
+                    </button>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-container-margin pb-24">
+<!-- Filters Glass Panel -->
+<section class="glass-panel border border-surface-container-high rounded-xl p-card-padding mb-gutter shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+<!-- Search -->
+<div class="flex flex-col gap-1.5 md:col-span-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Search</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container border border-surface-container-high rounded-lg py-2 pl-10 pr-4 text-on-surface placeholder:text-surface-variant focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-label-md text-label-md transition-colors" placeholder="User, ID, Action..." type="text"/>
+</div>
+</div>
+<!-- Date Range -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Timeframe</label>
+<select class="w-full bg-surface-container border border-surface-container-high rounded-lg py-2 px-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-label-md text-label-md appearance-none transition-colors">
+<option>Last 24 Hours</option>
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+<option>Custom Range...</option>
+</select>
+</div>
+<!-- Event Type -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Event Type</label>
+<select class="w-full bg-surface-container border border-surface-container-high rounded-lg py-2 px-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-label-md text-label-md appearance-none transition-colors">
+<option>All Modules</option>
+<option>Security</option>
+<option>Procurement</option>
+<option>Data Modification</option>
+<option>User Management</option>
+</select>
+</div>
+<!-- Severity -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Severity</label>
+<select class="w-full bg-surface-container border border-surface-container-high rounded-lg py-2 px-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-label-md text-label-md appearance-none transition-colors">
+<option>All Levels</option>
+<option>Info</option>
+<option>Warning</option>
+<option>Critical</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Data Table Container -->
+<section class="bg-on-secondary-fixed rounded-xl border border-surface-container-high overflow-hidden shadow-2xl relative">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-surface-container-high">
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider whitespace-nowrap">Timestamp</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">User / Entity</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Action</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Module</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider whitespace-nowrap">IP Address</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-surface-container-high">
+<!-- Row 1: Success/Info -->
+<tr class="hover:bg-surface-container-high/50 transition-colors group">
+<td class="py-3 px-4 font-label-md text-on-surface-variant whitespace-nowrap">
+                                    2023-10-27 14:32:01<br/>
+<span class="text-xs text-surface-variant group-hover:text-outline transition-colors">ID: AL-9021</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded border border-outline-variant object-cover" data-alt="Small avatar of a professional woman with glasses, neutral background, sharp corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuz7U7Sh7J_s2eUxM7FZnZoveaswiHx4jfR4gr7weuFlsUKhW5fYYp5KzgpLLiiFg0rTpeGW4tM6zF65poTaIRBt4WStJPOLpTJu3Vs8A3U9DjvGyYYHY3qkNYz3qm3NYegN97xap8IxCB3NGkHBLG5p50Chsor4a_uEwY10KcFqbZNigkJNY7oOfFiMsz10qiZuQwKJbh9l9KHV3kqntM6WzSs9AHJEMKri9NnLWWo9lY4GRmopAWfw"/>
+<div>
+<div class="font-medium">Sarah Jenkins</div>
+<div class="text-xs text-on-surface-variant">Procurement Lead</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium text-on-surface">Awarded Contract</span>
+<div class="text-xs text-on-surface-variant truncate max-w-[200px]">RFQ-2023-089 (Heavy Machinery)</div>
+</td>
+<td class="py-3 px-4">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-high border border-surface-bright text-xs">
+<span class="material-symbols-outlined text-[14px]">request_quote</span>
+                                        Purchasing
+                                    </div>
+</td>
+<td class="py-3 px-4 font-label-md text-on-surface-variant">192.168.1.105</td>
+<td class="py-3 px-4 text-right">
+<div class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-full bg-success-container/30 border border-success/30 text-success text-xs font-medium">
+<div class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></div>
+                                        Success
+                                    </div>
+</td>
+</tr>
+<!-- Row 2: Warning -->
+<tr class="hover:bg-surface-container-high/50 transition-colors group">
+<td class="py-3 px-4 font-label-md text-on-surface-variant whitespace-nowrap">
+                                    2023-10-27 13:15:44<br/>
+<span class="text-xs text-surface-variant group-hover:text-outline transition-colors">ID: AL-9020</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded border border-warning/30 bg-warning-container/20 flex items-center justify-center text-warning">
+<span class="material-symbols-outlined text-[18px]">dns</span>
+</div>
+<div>
+<div class="font-medium">SYSTEM</div>
+<div class="text-xs text-on-surface-variant">Automated Job</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium text-warning">API Rate Limit Exceeded</span>
+<div class="text-xs text-on-surface-variant truncate max-w-[200px]">Vendor Sync Endpoint (ERP-01)</div>
+</td>
+<td class="py-3 px-4">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-high border border-surface-bright text-xs">
+<span class="material-symbols-outlined text-[14px]">integration_instructions</span>
+                                        Integration
+                                    </div>
+</td>
+<td class="py-3 px-4 font-label-md text-on-surface-variant">10.0.4.22</td>
+<td class="py-3 px-4 text-right">
+<div class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-full bg-warning-container/30 border border-warning/30 text-warning text-xs font-medium">
+<div class="w-1.5 h-1.5 rounded-full bg-warning"></div>
+                                        Warning
+                                    </div>
+</td>
+</tr>
+<!-- Row 3: Critical -->
+<tr class="hover:bg-surface-container-high/50 transition-colors group bg-error-container/5">
+<td class="py-3 px-4 font-label-md text-on-surface-variant whitespace-nowrap">
+                                    2023-10-27 11:05:12<br/>
+<span class="text-xs text-surface-variant group-hover:text-outline transition-colors">ID: AL-9019</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded border border-error/50 object-cover" data-alt="Avatar of an unknown user silhouette, dark gray against black background, anonymous cyber aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMfDg5Ejib3dyVHfMkCDQ_77HvhLvstiXljHHkIclvceMB_-Tc9vyddjsGf7w2ssZiELGAw04ie04Po7GoZ3VAGCcfL8AXX6dPAKLAlZnXCMvk-X4XCfwaFHc8vOZGBsVH73emAjZ_g10NCEexRM7AZk_DQ2dhii8glMgIMfKRG07THTXKtdtRlNoSjWj-9shpnOleJVCzcgPtivWidE2lkbtOX0cmmkI8tqsbNYFtPWJVb86DCVZx8w"/>
+<div>
+<div class="font-medium text-error">Unknown User</div>
+<div class="text-xs text-error/70">Unauthenticated</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium text-error">Failed Login Attempt</span>
+<div class="text-xs text-on-surface-variant truncate max-w-[200px]">5 consecutive failures for 'admin'</div>
+</td>
+<td class="py-3 px-4">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-high border border-surface-bright text-xs">
+<span class="material-symbols-outlined text-[14px]">security</span>
+                                        Security
+                                    </div>
+</td>
+<td class="py-3 px-4 font-label-md text-error/80">145.22.90.11 (RU)</td>
+<td class="py-3 px-4 text-right">
+<div class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container/50 border border-error/50 text-error text-xs font-medium">
+<div class="w-1.5 h-1.5 rounded-full bg-error"></div>
+                                        Critical
+                                    </div>
+</td>
+</tr>
+<!-- Row 4: Normal Action -->
+<tr class="hover:bg-surface-container-high/50 transition-colors group">
+<td class="py-3 px-4 font-label-md text-on-surface-variant whitespace-nowrap">
+                                    2023-10-27 09:44:30<br/>
+<span class="text-xs text-surface-variant group-hover:text-outline transition-colors">ID: AL-9018</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest border border-outline-variant flex items-center justify-center text-on-surface font-label-sm">
+                                            MR
+                                        </div>
+<div>
+<div class="font-medium">Marcus Reed</div>
+<div class="text-xs text-on-surface-variant">Master Data Admin</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium text-on-surface">Updated Item Master</span>
+<div class="text-xs text-on-surface-variant truncate max-w-[200px]">Modified specifications for SKU-9920</div>
+</td>
+<td class="py-3 px-4">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-high border border-surface-bright text-xs">
+<span class="material-symbols-outlined text-[14px]">inventory_2</span>
+                                        Item Master
+                                    </div>
+</td>
+<td class="py-3 px-4 font-label-md text-on-surface-variant">192.168.1.55</td>
+<td class="py-3 px-4 text-right">
+<div class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant text-on-surface-variant text-xs font-medium">
+<div class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></div>
+                                        Info
+                                    </div>
+</td>
+</tr>
+<!-- Row 5: Normal Action -->
+<tr class="hover:bg-surface-container-high/50 transition-colors group">
+<td class="py-3 px-4 font-label-md text-on-surface-variant whitespace-nowrap">
+                                    2023-10-27 08:12:05<br/>
+<span class="text-xs text-surface-variant group-hover:text-outline transition-colors">ID: AL-9017</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded border border-outline-variant object-cover" data-alt="Small avatar of a professional man in a white collared shirt, modern industrial office background slightly blurred." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANY2Sd-kJAhy4wAQft-mGiyRz-asYjsW7tzLE03AMxTPP7Nd-JJbxmrA6_Bqx9BFcPhx2tN7mJKxDT9rRxWaog_AhpEYhLa_O0GU05g_QAJGil588g88zNaYRDOfLyL3O0hJ9tlrjoyJv7kU4iE2V80CkZeOrpd5nxBJPqmp2AEsV_Rhz-lGjNp7qo4lTPGd4OnnKnRULTPnsOH67YBCdPaA8a4JRilAIZNFNpMgixN9Wx6R-QjkX_dA"/>
+<div>
+<div class="font-medium">David Chen</div>
+<div class="text-xs text-on-surface-variant">Compliance Officer</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium text-on-surface">Approved Vendor</span>
+<div class="text-xs text-on-surface-variant truncate max-w-[200px]">TechSteel Industries (VEN-402)</div>
+</td>
+<td class="py-3 px-4">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container-high border border-surface-bright text-xs">
+<span class="material-symbols-outlined text-[14px]">factory</span>
+                                        Vendor Mgmt
+                                    </div>
+</td>
+<td class="py-3 px-4 font-label-md text-on-surface-variant">192.168.1.112</td>
+<td class="py-3 px-4 text-right">
+<div class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-full bg-success-container/30 border border-success/30 text-success text-xs font-medium">
+<div class="w-1.5 h-1.5 rounded-full bg-success"></div>
+                                        Success
+                                    </div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="bg-surface-container px-4 py-3 border-t border-surface-container-high flex items-center justify-between">
+<span class="text-sm text-on-surface-variant">Showing 1 to 5 of 2,491 entries</span>
+<div class="flex items-center gap-2">
+<button class="p-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary/20 text-primary font-label-md flex items-center justify-center border border-primary/30">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-high text-on-surface-variant font-label-md flex items-center justify-center">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-high text-on-surface-variant font-label-md flex items-center justify-center">3</button>
+<span class="text-on-surface-variant">...</span>
+<button class="p-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

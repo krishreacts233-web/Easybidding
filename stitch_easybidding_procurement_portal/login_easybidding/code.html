@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EasyBidding - Secure Account Access</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0a0e1a",
+                        "outline-variant": "#4d4635",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#414659",
+                        "primary-fixed": "#ffe08b",
+                        "surface-container": "#1b1f2c",
+                        "secondary-fixed": "#dde1f9",
+                        "inverse-surface": "#dfe2f3",
+                        "surface-dim": "#0f131f",
+                        "on-primary": "#3d2f00",
+                        "outline": "#99907c",
+                        "on-surface-variant": "#d0c5af",
+                        "on-error": "#690005",
+                        "surface": "#0f131f",
+                        "on-tertiary-fixed": "#141a30",
+                        "on-tertiary-container": "#333950",
+                        "tertiary-fixed-dim": "#c0c5e2",
+                        "on-primary-fixed": "#241a00",
+                        "inverse-primary": "#745b00",
+                        "inverse-on-surface": "#2c303d",
+                        "tertiary": "#c0c5e2",
+                        "on-surface": "#dfe2f3",
+                        "surface-bright": "#353946",
+                        "primary-fixed-dim": "#eac249",
+                        "on-tertiary": "#292f46",
+                        "secondary-fixed-dim": "#c1c5dd",
+                        "on-tertiary-fixed-variant": "#40465e",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#584400",
+                        "surface-variant": "#313442",
+                        "surface-container-high": "#262a37",
+                        "tertiary-fixed": "#dce1ff",
+                        "primary-container": "#c5a028",
+                        "surface-tint": "#eac249",
+                        "on-secondary-fixed": "#161b2c",
+                        "on-secondary-fixed-variant": "#414659",
+                        "tertiary-container": "#9da3bf",
+                        "background": "#0f131f",
+                        "on-background": "#dfe2f3",
+                        "surface-container-low": "#171b28",
+                        "on-primary-container": "#493800",
+                        "primary": "#eac249",
+                        "on-secondary-container": "#b0b4cb",
+                        "secondary": "#c1c5dd",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#2b3042",
+                        "surface-container-highest": "#313442"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "sidebar-width": "280px",
+                        "gutter": "16px",
+                        "card-padding": "20px",
+                        "container-margin": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0a0e1a; /* surface-container-lowest */
+            color: #dfe2f3; /* on-surface */
+        }
+        .glass-panel {
+            background: rgba(22, 27, 44, 0.7); /* level 1 */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(45, 51, 74, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full flex flex-col md:flex-row bg-surface-container-lowest text-on-surface font-body-md">
+<!-- Left Side: Visual Anchor Sidebar -->
+<aside class="hidden md:flex flex-col w-[280px] bg-surface-container-low border-r border-surface-variant p-6 h-screen sticky top-0">
+<!-- Logo & Brand -->
+<div class="mb-12">
+<h1 class="font-headline-md text-headline-md text-primary font-bold">EasyBidding</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Industrial Procurement</p>
+</div>
+<!-- Restricted Navigation Preview -->
+<nav class="flex-1 space-y-2 opacity-50 pointer-events-none select-none">
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-body-md text-body-md">Purchase</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">Items</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-body-md text-body-md">Quotations</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant">
+<span class="material-symbols-outlined">compare_arrows</span>
+<span class="font-body-md text-body-md">Comparison</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Status</span>
+</div>
+</nav>
+<!-- Footer / Trust Indicator -->
+<div class="mt-auto pt-6 border-t border-surface-variant opacity-70">
+<div class="flex items-center gap-2 text-primary font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span>Secured Connection</span>
+</div>
+</div>
+</aside>
+<!-- Right Side: Login Area -->
+<main class="flex-1 flex items-center justify-center p-6 md:p-12 relative overflow-hidden">
+<!-- Subtle Background Accent -->
+<div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-primary opacity-[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+<div class="w-full max-w-md z-10">
+<!-- Mobile Brand Header (Hidden on Desktop) -->
+<div class="md:hidden text-center mb-8">
+<h1 class="font-headline-lg text-headline-lg text-primary font-bold">EasyBidding</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Industrial Procurement</p>
+</div>
+<!-- Login Card -->
+<div class="glass-panel rounded-xl shadow-[0px_8px_24px_rgba(0,0,0,0.5)] p-8">
+<div class="mb-8">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight mb-2 uppercase">Secure Account Access</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Welcome to easybidding</p>
+</div>
+<!-- Guidance Text -->
+<div class="bg-surface-container/50 border border-surface-variant rounded-lg p-4 mb-8">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                        Sign in with your approved work-email login ID. First-time authorized administrators must request access, verify the six-digit email code, then sign in.
+                    </p>
+</div>
+<!-- Action Tabs -->
+<div class="flex flex-wrap gap-2 mb-8 border-b border-surface-variant pb-4">
+<button class="font-label-md text-label-md px-4 py-2 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all">
+                        Sign in
+                    </button>
+<button class="font-label-md text-label-md px-4 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-colors">
+                        Email link
+                    </button>
+<button class="font-label-md text-label-md px-4 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-colors">
+                        Request access
+                    </button>
+<button class="font-label-md text-label-md px-4 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant rounded-lg transition-colors ml-auto">
+                        Reset password
+                    </button>
+</div>
+<!-- Form -->
+<form class="space-y-6">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase block" for="email">User ID (Email)</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</span>
+<input class="w-full bg-surface-container border border-surface-variant rounded-lg py-3 pl-10 pr-4 text-on-surface font-label-md text-label-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder:text-on-surface-variant/50" id="email" placeholder="you@company.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase block" for="password">Password</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</span>
+<input class="w-full bg-surface-container border border-surface-variant rounded-lg py-3 pl-10 pr-12 text-on-surface font-label-md text-label-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" id="password" placeholder="••••••••" type="password"/>
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3 flex items-center text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Main Action -->
+<button class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md font-bold py-3.5 rounded-lg hover:bg-primary transition-colors mt-2 shadow-[0_0_15px_rgba(197,160,40,0.15)] flex justify-center items-center gap-2" type="button">
+<span>Sign in</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="flex items-center my-8">
+<div class="flex-grow border-t border-surface-variant"></div>
+<span class="mx-4 font-label-sm text-label-sm text-on-surface-variant uppercase">Or continue with</span>
+<div class="flex-grow border-t border-surface-variant"></div>
+</div>
+<!-- Secondary Actions -->
+<div class="space-y-4">
+<button class="w-full bg-surface-container border border-surface-variant text-on-surface font-label-md text-label-md py-3 rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center gap-3" type="button">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                        Connect with Google
+                    </button>
+<div class="text-center pt-2">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors inline-block" href="#">
+                            Forgot your password?
+                        </a>
+</div>
+</div>
+</div>
+<!-- Additional Info -->
+<div class="mt-8 text-center px-4">
+<p class="font-body-sm text-body-sm text-on-surface-variant/60">
+                    By accessing this system, you agree to the <a class="underline hover:text-primary transition-colors" href="#">Terms of Service</a> and <a class="underline hover:text-primary transition-colors" href="#">Privacy Policy</a>.
+                </p>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interaction for password toggle
+        document.querySelector('button[aria-label="Toggle password visibility"]').addEventListener('click', function() {
+            const input = document.getElementById('password');
+            const icon = this.querySelector('span');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility_off';
+            }
+        });
+    </script>
+
+<script src="cdn.jsdelivr.net/npm/@supabase/supabase-js@2"</script>
+
+const SUPABASE_URL = "https://eifvsqomiwxuduayutee.supabase.co";
+const SUPABASE_KEY = "sb_publishable_7K39eaej4rEp7idJkDOmQA_0jnyrOA0";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+</script>
+</body></html>

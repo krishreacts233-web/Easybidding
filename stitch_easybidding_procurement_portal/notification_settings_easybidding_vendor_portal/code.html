@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notification Settings - ProcureTech Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-container": "#b0b4cb",
+                        "tertiary-container": "#9da3bf",
+                        "primary": "#eac249",
+                        "primary-fixed": "#ffe08b",
+                        "outline": "#99907c",
+                        "on-error": "#690005",
+                        "inverse-surface": "#dfe2f3",
+                        "surface-tint": "#eac249",
+                        "on-secondary": "#2b3042",
+                        "surface-bright": "#353946",
+                        "on-primary-fixed-variant": "#584400",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#333950",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#292f46",
+                        "inverse-on-surface": "#2c303d",
+                        "on-secondary-fixed": "#161b2c",
+                        "secondary-fixed": "#dde1f9",
+                        "surface-container-highest": "#313442",
+                        "on-primary-fixed": "#241a00",
+                        "surface-variant": "#313442",
+                        "surface-container-low": "#171b28",
+                        "on-surface-variant": "#d0c5af",
+                        "background": "#0f131f",
+                        "surface": "#0f131f",
+                        "on-primary": "#3d2f00",
+                        "error-container": "#93000a",
+                        "surface-dim": "#0f131f",
+                        "secondary-container": "#414659",
+                        "on-secondary-fixed-variant": "#414659",
+                        "secondary": "#c1c5dd",
+                        "surface-container-lowest": "#0a0e1a",
+                        "on-background": "#dfe2f3",
+                        "inverse-primary": "#745b00",
+                        "on-surface": "#dfe2f3",
+                        "tertiary": "#c0c5e2",
+                        "tertiary-fixed": "#dce1ff",
+                        "on-tertiary-fixed": "#141a30",
+                        "primary-container": "#c5a028",
+                        "tertiary-fixed-dim": "#c0c5e2",
+                        "surface-container-high": "#262a37",
+                        "outline-variant": "#4d4635",
+                        "on-primary-container": "#493800",
+                        "secondary-fixed-dim": "#c1c5dd",
+                        "on-tertiary-fixed-variant": "#40465e",
+                        "surface-container": "#1b1f2c",
+                        "primary-fixed-dim": "#eac249"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "unit": "4px",
+                        "container-margin": "24px",
+                        "sidebar-width": "280px",
+                        "card-padding": "20px",
+                        "gutter": "16px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["JetBrains Mono"]
+                    },
+                    fontSize: {
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom toggle switch styling */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #c5a028; /* primary-container */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #c5a028; /* primary-container */
+        }
+        .toggle-checkbox:focus + .toggle-label {
+            box-shadow: 0 0 0 2px rgba(197, 160, 40, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen overflow-hidden flex selection:bg-primary-container/30 selection:text-primary-container">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant hidden md:flex flex-col py-container-margin px-4 z-40">
+<!-- Header -->
+<div class="mb-8 px-2 flex items-center space-x-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high border border-outline-variant overflow-hidden shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl icon-fill">domain</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary leading-tight">ProcureTech Pro</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Enterprise Vendor Portal</p>
+</div>
+</div>
+<!-- Main Nav -->
+<ul class="space-y-2 flex-grow">
+<li>
+<a class="flex items-center px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-3">request_quote</span>
+<span class="font-label-md text-label-md">Open RFQs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-3 py-2.5 rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-3">assignment_turned_in</span>
+<span class="font-label-md text-label-md">Submitted Bids</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-3 py-2.5 rounded-lg text-primary dark:text-primary font-bold bg-surface-container-high/50 group" href="#">
+<span class="material-symbols-outlined mr-3 icon-fill text-primary">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</li>
+</ul>
+<!-- Footer / CTA -->
+<div class="mt-auto pt-6 border-t border-outline-variant/30 space-y-4">
+<div class="px-3 py-2 bg-surface-container/50 rounded-lg border border-[#2d334a] flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Secure Connection Active</span>
+</div>
+</div>
+<ul class="space-y-2">
+<li>
+<a class="flex items-center px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px]">help_outline</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</li>
+<li>
+<a class="flex items-center px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-error transition-colors duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-3 text-[20px] group-hover:text-error transition-colors">logout</span>
+<span class="font-label-md text-label-md group-hover:text-error transition-colors">Logout</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-0 md:left-sidebar-width z-30 h-16 bg-background/80 dark:bg-background/80 backdrop-blur-xl border-b border-outline-variant flex justify-between items-center px-gutter">
+<div class="flex items-center">
+<!-- Mobile Menu Toggle (Visible only on small screens) -->
+<button class="md:hidden mr-4 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-md text-headline-md font-black text-on-surface hidden sm:block">Vendor Command Center</h2>
+<h2 class="font-headline-md text-headline-md font-black text-on-surface sm:hidden">VCC</h2>
+</div>
+<div class="flex items-center space-x-4">
+<!-- Search Icon (Mobile) / Input (Desktop) -->
+<div class="hidden lg:flex relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="bg-surface-container-low border border-[#2d334a] rounded-full py-1.5 pl-10 pr-4 text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none w-64 text-on-surface placeholder:text-on-surface-variant transition-all font-label-sm" placeholder="Search RFQs, Bids..." type="text"/>
+</div>
+<!-- Trailing Icons -->
+<button class="text-on-surface-variant hover:text-primary transition-all scale-95 active:scale-90 relative group">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full ring-2 ring-background"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all scale-95 active:scale-90 hidden sm:block">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<!-- Primary Action -->
+<button class="bg-primary-container text-[#0a0e1a] font-label-md text-label-md font-bold px-4 py-2 rounded-lg hover:bg-primary-fixed transition-colors shadow-[0_4px_14px_rgba(197,160,40,0.15)] active:scale-95 ml-2 hidden md:block">
+                New Proposal
+            </button>
+<!-- Profile Image -->
+<div class="w-8 h-8 rounded-full border border-[#2d334a] overflow-hidden ml-2 cursor-pointer hover:border-primary transition-colors">
+<img alt="Vendor User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA0FkhBYl4-ypfxz5DL8NrUaxAfUvwOxikGP3ZsXKVXZ6wKAMuGO-CRQoGUmn2UfEDyFIMKIA8L1kdhNfqkdMKVLJCxXDuptcVQEj5bxeXjOVgY9HfWmcLusX06eoSHciYoDccv0O15hH_lknZP0ZWiwQpbF6LF9QWCkNVL6mVfgnvbGEfk-ve_cRfoMklghWDjMo-qCYSPTRXvTpg3YV21njhq7SMmL7D0WijmE6OVV74J08qrVPeWA"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 md:ml-sidebar-width mt-16 p-gutter md:p-container-margin overflow-y-auto bg-surface relative">
+<!-- Ambient Background Glow -->
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+<div class="max-w-5xl mx-auto relative z-10">
+<!-- Page Header -->
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="flex items-center text-on-surface-variant font-label-sm mb-2 space-x-2">
+<span>Settings</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary">Notifications</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface">Notification Preferences</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-2xl">Manage how and when you receive alerts regarding your RFQs, bids, and vendor profile status.</p>
+</div>
+<div class="flex space-x-3 shrink-0">
+<button class="px-4 py-2 rounded-lg border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors font-label-md">Discard Changes</button>
+<button class="px-4 py-2 rounded-lg bg-primary-container text-[#0a0e1a] font-bold hover:bg-primary-fixed transition-colors font-label-md">Save Preferences</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Settings Categories -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Setting Card 1: New RFQs -->
+<div class="bg-surface-container-low rounded-xl border border-[#2d334a] overflow-hidden">
+<div class="p-5 border-b border-[#2d334a] bg-surface-container/30 flex items-center space-x-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high border border-[#2d334a] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined icon-fill">campaign</span>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[20px] font-semibold text-on-surface">New RFQs</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Alerts when a new request for quotation matches your configured commodity categories.</p>
+</div>
+</div>
+<div class="p-5 bg-surface-container-lowest">
+<div class="grid grid-cols-3 gap-4">
+<!-- Email Toggle -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-[#2d334a] bg-surface-container-low">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">mail</span>
+<span class="font-label-md text-on-surface">Email</span>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 checked:right-0 checked:border-primary-container focus:outline-none" id="rfq-email" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-highest cursor-pointer" for="rfq-email"></label>
+</div>
+</div>
+<!-- Push Toggle -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-[#2d334a] bg-surface-container-low">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">notifications_active</span>
+<span class="font-label-md text-on-surface">In-App</span>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 checked:right-0 checked:border-primary-container focus:outline-none" id="rfq-push" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-highest cursor-pointer" for="rfq-push"></label>
+</div>
+</div>
+<!-- SMS Toggle -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-[#2d334a] bg-surface-container-low opacity-60 grayscale">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">sms</span>
+<span class="font-label-md text-on-surface">SMS</span>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-not-allowed z-10 focus:outline-none" disabled="" id="rfq-sms" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-highest cursor-not-allowed" for="rfq-sms"></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Setting Card 2: Bid Status Updates -->
+<div class="bg-surface-container-low rounded-xl border border-[#2d334a] overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
+<div class="p-5 border-b border-[#2d334a] bg-surface-container/30 flex items-center space-x-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high border border-[#2d334a] flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined icon-fill">published_with_changes</span>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[20px] font-semibold text-on-surface">Bid Status Updates</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Alerts when your bid is viewed, shortlisted, or rejected by the buyer.</p>
+</div>
+</div>
+<div class="p-5 bg-surface-container-lowest">
+<div class="grid grid-cols-3 gap-4">
+<!-- Email Toggle -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-[#2d334a] bg-surface-container-low">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">mail</span>
+<span class="font-label-md text-on-surface">Email</span>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 checked:right-0 checked:border-primary-container focus:outline-none" id="bid-email" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-highest cursor-pointer" for="bid-email"></label>
+</div>
+</div>
+<!-- Push Toggle -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-[#2d334a] bg-surface-container-low ring-1 ring-primary-container bg-primary-container/5">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-[20px]">notifications_active</span>
+<span class="font-label-md text-primary">In-App</span>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 checked:right-0 checked:border-primary-container focus:outline-none" id="bid-push" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-highest cursor-pointer" for="bid-push"></label>
+</div>
+</div>
+<!-- SMS Toggle -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-[#2d334a] bg-surface-container-low">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">sms</span>
+<span class="font-label-md text-on-surface">SMS</span>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 checked:right-0 checked:border-primary-container focus:outline-none" id="bid-sms" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-highest cursor-pointer" for="bid-sms"></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Global Settings -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Schedule Settings -->
+<div class="bg-surface-container-low rounded-xl border border-[#2d334a] p-5">
+<div class="flex items-center space-x-3 mb-4">
+<span class="material-symbols-outlined text-primary icon-fill">schedule</span>
+<h3 class="font-headline-md text-[18px] font-semibold text-on-surface">Delivery Schedule</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-5">Choose how frequently you want to receive non-critical email notifications.</p>
+<div class="space-y-3">
+<label class="flex items-start p-3 rounded-lg border border-primary bg-primary-container/10 cursor-pointer">
+<div class="flex items-center h-5">
+<input checked="" class="w-4 h-4 text-primary bg-surface-container-highest border-outline-variant focus:ring-primary focus:ring-2 bg-transparent" id="sched-immediate" name="schedule" type="radio"/>
+</div>
+<div class="ml-3">
+<span class="block font-label-md text-on-surface">Immediate</span>
+<span class="block font-body-sm text-on-surface-variant text-xs mt-1">Send alerts as soon as events occur.</span>
+</div>
+</label>
+<label class="flex items-start p-3 rounded-lg border border-[#2d334a] bg-surface-container-lowest hover:bg-surface-container-high transition-colors cursor-pointer">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 text-primary bg-surface-container-highest border-outline-variant focus:ring-primary focus:ring-2 bg-transparent" id="sched-digest" name="schedule" type="radio"/>
+</div>
+<div class="ml-3">
+<span class="block font-label-md text-on-surface">Daily Digest</span>
+<span class="block font-body-sm text-on-surface-variant text-xs mt-1">Roll up activity into a single email at 8:00 AM.</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Contact Info Summary -->
+<div class="bg-surface-container-low rounded-xl border border-[#2d334a] p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-md text-[18px] font-semibold text-on-surface">Active Channels</h3>
+<button class="text-primary hover:text-primary-fixed text-sm font-label-md transition-colors">Edit</button>
+</div>
+<div class="space-y-4">
+<div>
+<span class="font-label-sm text-on-surface-variant block mb-1">Primary Email</span>
+<div class="flex items-center text-on-surface font-label-md bg-surface-container-lowest p-2 rounded border border-[#2d334a]">
+<span class="material-symbols-outlined text-[16px] mr-2 text-on-surface-variant">mail</span>
+                                    vendor.admin@company.com
+                                </div>
+</div>
+<div>
+<span class="font-label-sm text-on-surface-variant block mb-1">SMS Number</span>
+<div class="flex items-center text-on-surface font-label-md bg-surface-container-lowest p-2 rounded border border-[#2d334a]">
+<span class="material-symbols-outlined text-[16px] mr-2 text-on-surface-variant">smartphone</span>
+                                    +1 (555) 019-2834
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

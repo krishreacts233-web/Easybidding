@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EasyBidding - Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#d0c5af",
+                        "surface-dim": "#0f131f",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0a0e1a",
+                        "outline-variant": "#4d4635",
+                        "tertiary": "#c0c5e2",
+                        "surface-tint": "#eac249",
+                        "surface-container-high": "#262a37",
+                        "on-tertiary": "#292f46",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#333950",
+                        "on-tertiary-fixed-variant": "#40465e",
+                        "surface-container-highest": "#313442",
+                        "primary-container": "#c5a028",
+                        "on-background": "#dfe2f3",
+                        "secondary-fixed-dim": "#c1c5dd",
+                        "on-secondary-fixed-variant": "#414659",
+                        "primary": "#eac249",
+                        "surface-bright": "#353946",
+                        "tertiary-fixed-dim": "#c0c5e2",
+                        "on-tertiary-fixed": "#141a30",
+                        "secondary-container": "#414659",
+                        "surface-container-low": "#171b28",
+                        "on-primary-container": "#493800",
+                        "on-primary-fixed": "#241a00",
+                        "tertiary-fixed": "#dce1ff",
+                        "secondary": "#c1c5dd",
+                        "on-surface": "#dfe2f3",
+                        "surface": "#0f131f",
+                        "inverse-primary": "#745b00",
+                        "inverse-on-surface": "#2c303d",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#dfe2f3",
+                        "surface-variant": "#313442",
+                        "surface-container": "#1b1f2c",
+                        "primary-fixed": "#ffe08b",
+                        "on-secondary": "#2b3042",
+                        "on-secondary-fixed": "#161b2c",
+                        "on-secondary-container": "#b0b4cb",
+                        "secondary-fixed": "#dde1f9",
+                        "error": "#ffb4ab",
+                        "background": "#0f131f",
+                        "tertiary-container": "#9da3bf",
+                        "on-primary": "#3d2f00",
+                        "on-primary-fixed-variant": "#584400",
+                        "outline": "#99907c",
+                        "primary-fixed-dim": "#eac249"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-padding": "20px",
+                        "gutter": "16px",
+                        "container-margin": "24px",
+                        "unit": "4px",
+                        "sidebar-width": "280px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0a0e1a; color: #dfe2f3; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex flex-col md:hidden pb-[80px]">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant px-gutter py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-surface-variant transition-colors text-on-surface">
+<span class="material-symbols-outlined text-headline-md font-headline-md">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-on-surface">Notifications</h1>
+</div>
+<button class="text-primary font-label-md text-label-md hover:text-primary-fixed transition-colors">Mark all as read</button>
+</header>
+<!-- Filter Tabs -->
+<div class="sticky top-[73px] z-40 bg-surface-container-lowest border-b border-outline-variant px-gutter py-3">
+<div class="flex gap-4 overflow-x-auto hide-scrollbar whitespace-nowrap snap-x">
+<button class="snap-start px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm shadow-sm transition-transform active:scale-95 duration-150">All</button>
+<button class="snap-start px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-variant transition-all active:scale-95 duration-150">RFQs</button>
+<button class="snap-start px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-variant transition-all active:scale-95 duration-150">Bids</button>
+<button class="snap-start px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-variant transition-all active:scale-95 duration-150">System</button>
+</div>
+</div>
+<!-- Notification Feed -->
+<main class="flex-1 px-gutter py-container-margin space-y-4">
+<!-- Notification 1: New RFQ (Unread) -->
+<div class="relative bg-surface-container-low rounded-lg p-card-padding border border-surface-variant shadow-sm hover:bg-surface-container-high transition-colors active:scale-[0.98] duration-150 cursor-pointer">
+<div class="absolute top-4 left-4 w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<div class="flex gap-4 pl-4">
+<div class="flex-shrink-0 flex items-start">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">request_quote</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-body-md font-body-md font-bold text-on-surface pr-2">New RFQ: Heavy Duty Hydraulic Pump</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant shrink-0">10m ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Requirement for 5 units in Dubai Ind. City</p>
+</div>
+</div>
+</div>
+<!-- Notification 2: Bid Shortlisted -->
+<div class="relative bg-surface-container-low rounded-lg p-card-padding border border-surface-variant shadow-sm hover:bg-surface-container-high transition-colors active:scale-[0.98] duration-150 cursor-pointer opacity-90">
+<div class="flex gap-4">
+<div class="flex-shrink-0 flex items-start">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-body-md font-body-md text-on-surface pr-2">Bid Shortlisted!</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant shrink-0">2h ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Your proposal for RFQ-2024-089 has been moved to shortlisting.</p>
+</div>
+</div>
+</div>
+<!-- Notification 3: Document Expiring (Urgent) -->
+<div class="relative bg-surface-container-low rounded-lg p-card-padding border border-error/30 shadow-sm hover:bg-surface-container-high transition-colors active:scale-[0.98] duration-150 cursor-pointer overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex gap-4 pl-3">
+<div class="flex-shrink-0 flex items-start">
+<div class="w-10 h-10 rounded-full bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-body-md font-body-md font-bold text-error pr-2">Compliance Alert</h3>
+<span class="text-label-sm font-label-sm text-error shrink-0">1d ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">VAT Certificate expires in 12 days. Tap to update.</p>
+</div>
+</div>
+</div>
+<!-- Notification 4: Message Received -->
+<div class="relative bg-surface-container-low rounded-lg p-card-padding border border-surface-variant shadow-sm hover:bg-surface-container-high transition-colors active:scale-[0.98] duration-150 cursor-pointer opacity-90">
+<div class="flex gap-4">
+<div class="flex-shrink-0 flex items-start">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mail</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-body-md font-body-md text-on-surface pr-2">New Message from Buyer</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant shrink-0">2d ago</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Regarding logistics for the Steel Tubing order.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="fixed bottom-0 left-0 w-full bg-surface-container-high z-50 flex justify-around items-center h-[80px] px-2 shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-sm text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">request_quote</span>
+<span class="font-label-sm text-[10px]">Open RFQs</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">assignment_turned_in</span>
+<span class="font-label-sm text-[10px]">Submitted Bids</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-primary" href="#">
+<div class="relative">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<div class="absolute top-0 right-0 w-2 h-2 rounded-full bg-error border border-surface-container-high"></div>
+</div>
+<span class="font-label-sm text-[10px] font-bold">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">settings</span>
+<span class="font-label-sm text-[10px]">Settings</span>
+</a>
+</nav>
+</body></html>

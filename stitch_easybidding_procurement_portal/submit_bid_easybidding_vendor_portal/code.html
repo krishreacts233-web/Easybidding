@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Submit Bid: RFQ-2023-1042 - EasyBidding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#dfe2f3",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#ffe08b",
+                        "tertiary-fixed": "#dce1ff",
+                        "surface-container-lowest": "#0a0e1a",
+                        "on-primary-fixed-variant": "#584400",
+                        "on-surface": "#dfe2f3",
+                        "on-primary-container": "#493800",
+                        "on-primary-fixed": "#241a00",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "surface-tint": "#eac249",
+                        "surface-bright": "#353946",
+                        "secondary-fixed-dim": "#c1c5dd",
+                        "on-surface-variant": "#d0c5af",
+                        "outline-variant": "#4d4635",
+                        "on-background": "#dfe2f3",
+                        "secondary": "#c1c5dd",
+                        "tertiary-fixed-dim": "#c0c5e2",
+                        "on-tertiary-fixed-variant": "#40465e",
+                        "on-tertiary-fixed": "#141a30",
+                        "surface": "#0f131f",
+                        "on-tertiary": "#292f46",
+                        "on-secondary": "#2b3042",
+                        "on-secondary-fixed": "#161b2c",
+                        "primary-fixed-dim": "#eac249",
+                        "surface-variant": "#313442",
+                        "on-secondary-container": "#b0b4cb",
+                        "inverse-primary": "#745b00",
+                        "secondary-container": "#414659",
+                        "tertiary-container": "#9da3bf",
+                        "primary-container": "#c5a028",
+                        "surface-container-highest": "#313442",
+                        "secondary-fixed": "#dde1f9",
+                        "surface-container-high": "#262a37",
+                        "background": "#0f131f",
+                        "surface-container": "#1b1f2c",
+                        "on-tertiary-container": "#333950",
+                        "inverse-on-surface": "#2c303d",
+                        "primary": "#eac249",
+                        "surface-dim": "#0f131f",
+                        "on-primary": "#3d2f00",
+                        "outline": "#99907c",
+                        "surface-container-low": "#171b28",
+                        "tertiary": "#c0c5e2",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#414659"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "card-padding": "20px",
+                        "container-margin": "24px",
+                        "sidebar-width": "280px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-background">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container border-r border-outline-variant flex flex-col py-container-margin px-gutter z-40 hidden md:flex">
+<div class="mb-8 px-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">EasyBidding</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Vendor Portal</p>
+</div>
+<button class="mb-8 w-full bg-primary text-on-primary py-3 rounded-DEFAULT font-label-md text-label-md font-bold flex items-center justify-center gap-2 hover:bg-surface-tint transition-colors">
+<span class="material-symbols-outlined">add</span>
+            New Bid
+        </button>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-150 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold bg-surface-container-high active:scale-95 duration-150 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote" style="font-variation-settings: 'FILL' 1;">request_quote</span>
+                Open RFQs
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-150 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+                Submitted Bids
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-150 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant space-y-2">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+                Support
+            </a>
+<div class="flex items-center gap-3 px-4 py-2 text-on-surface-variant font-body-sm text-body-sm opacity-70">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="verified_user">verified_user</span>
+                Secured Connection
+            </div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-280px)] h-16 bg-surface/40 backdrop-blur-md border-b border-outline-variant shadow-sm z-50 flex justify-between items-center px-container-margin">
+<div class="flex items-center md:hidden">
+<h1 class="font-headline-sm text-headline-sm font-black text-primary">EasyBidding</h1>
+</div>
+<div class="hidden md:flex flex-1 items-center max-w-md focus-within:ring-2 focus-within:ring-primary rounded-lg">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container border-none rounded-lg pl-10 pr-4 py-2 text-on-surface font-body-md focus:ring-0 placeholder-on-surface-variant" placeholder="Search RFQs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden ml-2">
+<img alt="Vendor Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a vendor representative in a corporate setting. The lighting is moody and cinematic, matching the high-end, dark-mode aesthetic of the procurement portal. The image is cropped closely to the face and shoulders, conveying trust and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaGQ0UVywB4XmZ1ZBjNrcEAKhmt0eTDT1jlEZ98Y7KTe8Fb2OPu3NGDuGHsgC3llGmahQhGSiUSlh5QDiz_3-vkSYF91qrS1VJMY7xvt4_SIMtVnw_qQc-qA-ayw4aT5DyoGfn7mZqwxrOpvGBA7SpVgNAil6Ud17SmXhxCulIu0cDJjzekWmqykD39x7qTrl_a2weZ8Q4TKAyGTyDfNMotGgVyCJ3bWM2QY4GgRfGEc9cbjLzcqJxYg"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 ml-0 md:ml-sidebar-width mt-16 p-container-margin overflow-y-auto overflow-x-hidden">
+<div class="max-w-6xl mx-auto">
+<header class="mb-8">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md mb-2">
+<a class="hover:text-primary transition-colors" href="#">Open RFQs</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>RFQ-2023-1042</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Submit Bid: RFQ-2023-1042</h2>
+<div class="flex items-center gap-2 bg-surface-container-low border border-outline-variant px-3 py-1.5 rounded-lg">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md text-on-surface">Status: Open</span>
+<span class="mx-2 text-outline-variant">|</span>
+<span class="font-label-md text-label-md text-on-surface">Closes in: 2d 14h</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Section 1: RFQ Information -->
+<div class="lg:col-span-1 space-y-6">
+<div class="bg-surface-container rounded-lg border border-outline-variant p-card-padding">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6 border-b border-outline-variant pb-2">RFQ Details</h3>
+<dl class="space-y-4 font-body-md text-body-md">
+<div>
+<dt class="text-on-surface-variant font-label-sm text-label-sm mb-1 uppercase tracking-wider">Department</dt>
+<dd class="text-on-surface">Heavy Machinery Procurement</dd>
+</div>
+<div>
+<dt class="text-on-surface-variant font-label-sm text-label-sm mb-1 uppercase tracking-wider">Item Description</dt>
+<dd class="text-on-surface">Industrial Grade Actuators (Series 7)</dd>
+</div>
+<div>
+<dt class="text-on-surface-variant font-label-sm text-label-sm mb-1 uppercase tracking-wider">Technical Specifications</dt>
+<dd class="text-on-surface">
+<ul class="list-disc list-inside text-on-surface-variant mt-1 space-y-1 font-body-sm text-body-sm">
+<li>Torque rating: 500Nm</li>
+<li>Operating voltage: 24V DC</li>
+<li>IP67 rating required</li>
+</ul>
+</dd>
+</div>
+<div>
+<dt class="text-on-surface-variant font-label-sm text-label-sm mb-1 uppercase tracking-wider">Required Quantity</dt>
+<dd class="text-on-surface font-label-md text-label-md text-primary">250 Units</dd>
+</div>
+<div>
+<dt class="text-on-surface-variant font-label-sm text-label-sm mb-1 uppercase tracking-wider">Delivery Location</dt>
+<dd class="text-on-surface">Plant B, North Wing, Detroit MI</dd>
+</div>
+</dl>
+<div class="mt-6 pt-6 border-t border-outline-variant">
+<button class="w-full flex items-center justify-center gap-2 text-primary font-label-md text-label-md hover:bg-surface-container-high py-2 rounded transition-colors border border-outline-variant">
+<span class="material-symbols-outlined">download</span>
+                                Download RFQ Specs (PDF)
+                            </button>
+</div>
+</div>
+</div>
+<!-- Section 2: Bid Submission Form -->
+<div class="lg:col-span-2">
+<div class="bg-surface-container rounded-lg border border-outline-variant p-card-padding shadow-[0px_8px_24px_rgba(0,0,0,0.5)]">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6 border-b border-outline-variant pb-2">Bid Submission Form</h3>
+<form class="space-y-6">
+<!-- Financials -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-surface-container-low p-4 rounded-lg border border-outline-variant">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Unit Rate (INR)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md">₹</span>
+<input class="w-full bg-surface border border-outline-variant rounded-DEFAULT pl-8 pr-4 py-2 font-label-md text-label-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Total Amount</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md">₹</span>
+<input class="w-full bg-surface border border-outline-variant rounded-DEFAULT pl-8 pr-4 py-2 font-label-md text-label-md text-on-surface opacity-70 cursor-not-allowed" disabled="" placeholder="0.00" readonly="" type="text"/>
+</div>
+<p class="mt-1 font-body-sm text-body-sm text-on-surface-variant opacity-70 text-right">Auto-calculated (Qty * Rate)</p>
+</div>
+</div>
+<!-- Logistics & Terms -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Lead Time (Days)</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-DEFAULT px-4 py-2 font-label-md text-label-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="e.g., 45" type="number"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Warranty (Months)</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-DEFAULT px-4 py-2 font-label-md text-label-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="e.g., 24" type="number"/>
+</div>
+</div>
+<!-- Comments -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Technical Comments / Deviations</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-DEFAULT px-4 py-2 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none" placeholder="Detail any deviations from standard specs..." rows="4"></textarea>
+</div>
+<!-- Upload -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Supporting Documents</label>
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-6 bg-surface-container-low flex flex-col items-center justify-center text-center hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary transition-colors mb-2">cloud_upload</span>
+<p class="font-body-md text-body-md text-on-surface mb-1">Drag and drop files here or <span class="text-primary font-label-md">Browse</span></p>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-70">Accepted formats: PDF, Excel (Max 10MB)</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="pt-6 border-t border-outline-variant flex flex-col-reverse md:flex-row justify-end gap-4">
+<button class="px-6 py-2 rounded-DEFAULT border border-primary text-primary font-label-md text-label-md hover:bg-surface-container-high transition-colors" type="button">
+                                    Save as Draft
+                                </button>
+<button class="px-6 py-2 rounded-DEFAULT bg-primary text-on-primary font-label-md text-label-md font-bold hover:bg-surface-tint transition-colors flex items-center justify-center gap-2 shadow-[0px_4px_12px_rgba(197,160,40,0.2)]" type="button">
+                                    Submit Quotation
+                                    <span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
